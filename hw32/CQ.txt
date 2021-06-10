@@ -1,0 +1,31 @@
+Exercise 1: On paper, create a graph with 7 vertices and 20 edges.
+
+For this graph, identify a maximal matching. Also, identify a minimum vertex cover.
+
+Verify the claims made in the chapter that 
+
+1)  the endpoints of the maximal matching constitute a vertex cover 
+
+2) the size of the minimum vertex cover is within a factor of two of the number of endpoints in the maximal matching.
+
+To submit the graph, please type in a text description, e.g. that A connects to C and E, B connects to G and H, etc.
+
+- Initial submission time. This weekend is going to kick my ass
+
+Exercise 2: Explain, in your own words, why this approach to constructing a vertex cover necessarily produces an approximation within a factor of two
+
+(without needing to know the exact size of the minimum vertex cover!)
+
+- Um.
+
+Exercise 3: Suppose we want to improve on the matching algorithm for vertex cover.  We start with the approximation that is within a factor of two, then we make local adjustments:  we 'unselect' any vertices that are not needed.
+
+Will this approach allow us to find a minimum vertex cover?  Why or why not?
+
+- Yes.
+
+Exercise 4 (9.4): Given an undirected graph G = (V, E) in which each node has degree ≤ d, 
+
+show how to efficiently find an independent set whose size is at least 1/(d + 1) times that of the largest independent set.
+
+- Proof time.

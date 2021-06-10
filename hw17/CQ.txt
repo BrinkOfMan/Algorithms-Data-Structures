@@ -1,0 +1,106 @@
+Exercise 1 (3.1): Perform a depth-first search on the following graph; whenever there's a choice of vertices, pick the one that is alphabetically first.
+
+Classify each edge as a tree edge or back edge, and give the pre and post number for each vertex.
+
+- A(1,12) B(2,11) C(3,10) F(4,9) E(5,8) I(6,7) D(13,18) G(14,17) H(15,16) 
+
+- Tree edges: (a,b) (b,c) (c,f) (f,e) (e,i) (d,g) (g,h)
+
+- Back edges: (e,a) (e,b) (h,d)
+
+Exercise 2 (3.2): Perform depth-first search on the following graphs; whenever there's a choice of vertices, pick the one that is alphabetically first.
+
+Classify each edge as a tree edge, forward edge, back edge, or cross edge, and give the pre and post number for each vertex.
+
+(a)
+
+- A(1,16) B(2,15) C(3,14) D(4,13) H(5,12) G(6,11) F(7,10) E(8,9)
+
+- Tree edges: (a,b) (b,c) (c,d) (d,h) (h,g) (g,f) (f,e)
+
+- Forward edges: (a,f) (b,e)
+
+- Back edges: (d,b) (f,g)
+
+- Cross edges: (e,d) (e,g)
+
+(b)
+
+- A(1,16) B(2,11) F(3,10) C(4,5) D(6,7) E(8,9) H(12,15) G(12,14)
+
+- Tree edges: (a,b) (b,f) (f,c) (f,d) (f,e) (a,h) (h,g)
+
+- Forward edges: (d,e)
+
+- Back edges: (g,a)
+
+- Cross edges: (g,b) (g,f) (c,b) (d,c)
+
+Exercise 3 (3.3): Run the DFS-based topological ordering algorithm on the following graph. Whenever you have a choice of vertices to explore, always pick the one that is alphabetically first.
+
+(a) Indicate the pre and post numbers of the nodes
+
+- Since we treat all incoming edges as prerequisites for moving to a particular node, the topological ordering w/ pre and post numbers looks like this:
+
+- A(1,16) B(2,15) C(3,14) D(4,13) E(5,12) F(6,11) G(7,10) H(8,9)
+
+(b) What are the sources and sinks of the graph?
+
+- Sources (no incoming edges): A B
+
+- Sinks (no outgoing edges): G H
+
+(c) What topological ordering is found by the algorithm?
+
+- A B C D E F G H, also answered in part (a) ((oops!))
+
+(d) How many topological orderings does this graph have?
+
+- ignoring the alphabetical choice of ordering, and only focusing on ordering by incoming edges:
+
+- 3 sets of 2 alphabetical choices = 3 * 2 = 6 choices of ordering
+
+Exercise 4 (3.6): In an undirected graph, the degree d(u) of a vertex u is the number of neighbors u has, or equivalently, the number of edges incident upon it.
+
+In a directed graph, we distinguish between the indegree d_in(u), which is the number of edges into u, and the outdegree d_out(u), the number of edges leaving u.
+
+(a) Show that, in an undirected graph, *wacky sum equation that I don't understand*
+
+- After finishing the reading, I believe this means to prove that the sum of degrees = 2*edges
+
+- In our previous graphs, we've already agreed to count 2*e steps for nearby(u). The same logic applies here, as each vertex u that has neighbor v (1 degree) is also that vertex's (v's) neighbor (u, 1 degree). Hence, 2 degree to be summed for one edge.
+
+(b) Use part (a) to show that, in an undirected graph, there must be an even number of vertices whose degree is odd.
+
+- Since each edge constitutes a reciprocal connection of degree to another node. Each edge that sets one vertices' degree to odd must also then create another node with an odd degree.  
+
+(c) Does a similar statement hold for the number of vertices with odd indegree in a directed graph?
+
+- No. The non-reciprocal relationship of a directed edge disables this property of an even amount of odd degrees.
+
+Exercise 5 (3.7): A bipartite graph is a graph G = (V, E) whose vertices can be partitioned into two sets (V = V_1 ∪ V_2 and V_1 ∩ V_2 = null), such that there are no edges between vertices in the same set.
+
+(for instance, if u, v ∈ V_1, then there is no edge between u and v)
+
+(a) Give a linear-time algorithm to determine whether an undirected graph is bipartite.
+
+- (for a vertex u) if(!explored(v)): explore(v) and add edge to linked list.
+
+- if two vertices connected to u are themselves connected, not a bipartite.
+
+(b) There are many other ways to formulate this property. For instance, an undirected graph is bipartite if and only if it can be colored with just two colors.
+Prove the following formulation: an undirected graph is bipartite if and only if it contains no cycles of odd length.
+
+- A cycle of odd length would imply an unnecessary connection between two nodes in the same set.
+
+- Also, wouldn't a cycle also not be possible for a graph with just two sets of nodes that are able to connect to each other? Or, do we assume that the undirected edge single connection constitutes a cycle?
+
+(c) At most how many colors are needed to color in an undirected graph with exactly one odd-length cycle?
+
+- 3, as we can apply the if and only if rule from (b) with the property of being able to only use 2 colors for a bipartite graph.
+
+Exercise 6 (3.9): For each node u in an undirected graph, let twodegree[u] be the sum of the degrees of u's neighbors.
+
+Show how to compute the entire array of twodegree[.] values in linear time, given a graph in adjacency list format
+
+- Using depth-first search: sum all edges of vertices connected to u, and return the value. The linear search time O(|V|+|E|) of DFS should be able to apply to this summation time.

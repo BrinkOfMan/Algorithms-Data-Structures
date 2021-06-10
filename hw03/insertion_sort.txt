@@ -1,0 +1,9 @@
+300 iterations from my Windows desktop computer: 511632, 517712, 508592
+
+(Average 512,645)
+
+300 iterations from ssh link machine: 1321360, 1297270, 1199480
+
+(Average 1,272,703)
+
+- This seems fishy, but I think the code is correct.

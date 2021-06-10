@@ -1,0 +1,11 @@
+formula for double loop: 
+
+result = 5 + (3 + n) + (n * (3 + 2n))
+
+Main is always 5
+
+There will always be at LEAST a cost of 3 for the setup of each loop
+
+The first loop will not be called again, and will only increment after the initial 3 steps for setup before ending, hence 3 + not
+
+The second loop will be called n times within the first loop, and will require 3 steps prior to both incrementing a by 3 and i by 1 each loop, hence (n calls * (3 for setup + 2*n steps per iteration))

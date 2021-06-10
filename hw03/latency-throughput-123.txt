@@ -1,0 +1,17 @@
+1. If we're working with integers on a typical processor (as indicated on the table mentioned at the beginning), which of the following operations has the highest latency: Moving, adding, subtracting, multiplying, dividing, shifting, or boolean comparison?
+
+- Division, with lows of 20 and highs of 80, 45, abd 60 for integer, floats, and float vecotrs, respectively.
+
+2. Looking specifically at our processor (Intel Core 2 Merom; you might find the *Instruction Tables* helpful), do we see higher latency and reciprocal throughput when we move (MOV) between two registers, or between a register and memory?)
+
+- I see a latency of 1 and reciprocal throughput of .25-5 for "Integer Move", but Memory read/write with 3-4 latency and .5-1 reciprocal throughput. 
+
+-- I believe this means moving between memory and registers has a higher latency and  reciprocal throughput than moving between registers. 
+
+3. In general, based on the instruction tables, do most instructions have higher latency or reciprocal throughput? Why?
+
+- Higher latency. This is likely due to reciprocal throughput referencing the amount of time it takes from the time an instruction starts to execute until another independent instruction of the same type can start executing.
+
+-- AKA the number of clock cycles per instruction in a series of independent instructions of the same kind.
+
+--- Because of this, I think repeating the same instruction multiple times is quicker than consistently breaking into new instructions.

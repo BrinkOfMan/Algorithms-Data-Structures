@@ -1,0 +1,31 @@
+1) Find an example of coded bias in the real world. What kind of ideas can you implement to unveil bias within the code/Algorithm/issue that you chose? (50-100 Words)
+
+- A real world example of coded bias can be found in the systemic economic oppresion of poor and/or minority communities.
+
+- Social programs, particularly in these areas, are notoriously underfunded, providing less opportunity to break out of the cycle.
+
+- Contrast this with wealthier communities, whose better-funded social programs are able to help those who have otherwise fallen on hard times.
+
+- An algorithm could unveil this bias in accepting general household income of a particular region, and predict the availability / quality / turnout of social programs.
+
+2) In the movie “Coded Bias” various topics were discussed and unpacked to address bias and racism. The following is a quote from the movie: “Racism is becoming mechanized and privatized.” Who said this, what was the context and what does it mean to you? (50-100 Words)
+ 
+- Wish I had read this question prior to watching the film. I don't remember quotes well.
+
+- My best guess would be Silkie Carlo, in her work on monitoring how Amazon's facial recognition software was being used in the UK's to (usually incorrectly) identify criminals. 
+
+- UPDATE: After re-watching the film, skipping 10 seconds every time until I hear the quote, I now know it was Patric Tariq Mellet, the Apartheid Historian.
+
+- The context is discussing how past ways of controlling populations based on appearance have become ingrained in modern facial recognition technology, as our beliefs and tendencies leave an impact in the algorithms we create.
+
+- To me it appears as a reflection of humanity's past treatment of racial topics, immediately profiling non-white minorities as more "at-risk".
+
+- "Humans are creating their own image of themselves - it's quite literally - racism is becoming mechanized, robotized"
+
+3) If you had all the resources in the world to create or design a product or code which contributed to the inclusivity of technology, what would it be? (50-100 Words)
+
+- I would want to create a product, similar to the raspberry pi, specifically designed to provide access to the general tasks any normal desktop could accomplish.
+
+- Hopefully I could find a way to produce this pseudo-pi for ridiculously low prices, raising technology inclusivity for lower-income families.
+
+- While completely abstract, I would love to find ways in which "at-risk" AI systems could account for extraneous variables, or special cases. Although that is unlikely to come to fruition, given the previous attempts of creating such an AI. 

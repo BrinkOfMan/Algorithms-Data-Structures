@@ -1,0 +1,17 @@
+Please discuss (in three or four sentences) the results of your timing tests for insertion sort, selection sort, and "no loop" sort.
+
+- Insertion (Average 512,645), Selection (Average 310,358), No loop (Average 37,795,066,667)
+
+-- Seems like Selection did the best, with insertion following somewhat behind, and the recursive loop getting destroyed
+
+Given the analysis you did in homework 2, did anything surprise you?
+
+- A little. I remember predicting a much higher number for selection sort when compared to insertion sort. 
+
+-- Other than that, I remember seeing the exponential growth of steps for no_loop as numbers grew, so a super large timing test doesn't surprise me. 
+
+How long do you think it would take to sort 400 random numbers, for each algorithm?
+
+- Insertion: 700,000 - 900,000.  Selection: 400,000 - 500,000.  No loop: A whole bunch (500 Billion?)
+
+-- Running tests with 400 gave me results around my predictions, except for no_loop. No_loop was at 285 billion.

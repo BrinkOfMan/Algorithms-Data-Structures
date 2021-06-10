@@ -1,0 +1,23 @@
+1. What is the sum of the whole numbers from 1 to n? (if n=4, this is 1 + 2 + 3 + 4 = 10)
+
+- (n(n + 1))) / 2
+
+2. Justify your answer mathematically, in a way that makes intuitive sense to you
+
+- Couple examples. Here, we can take the sum of numbers at opposite ends to make consistent additions of n+1 n/2 times (except for odd, where the middle number is left alone).
+
+-- Essentially, multiplying n+1 by half of n
+
+- Ex: n = 4, we can take (1 + 4 = 5) + (2 + 3 = 5) to get 5 + 5 = 10. 
+
+- Ex: n = 9, we can take (1 + 9 = 10) + (2 + 8 = 10) + (3 + 7 = 10) + (4 + 6 = 10) + (5) to get 10 + 10 + 10 + 10 + 5 = (n / 2)(n + 1) = 4.5 * 9 = 45.
+
+3. What is the sum of the powers of 2 from 1 to 2^n?  (if n = 3, this is 1 + 2 + 4 + 8 = 15)
+
+- (2^(n + 1)) - 1
+
+4. Justify your answer mathematically, in a way that makes intuitive sense to you.
+
+- Kind of similar to the sum of 1 to n with opposite sides, here we take products of opposite sides and add them together for a sum of 1 less than the power of 2^(n+1)
+
+-- I think this is just a quirk of powers of 2.

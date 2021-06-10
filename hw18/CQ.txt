@@ -1,0 +1,94 @@
+Exercise 0 (Review): Take a look at the flame graphs you created in homework 12, particularly the variations on Dijkstra (panC1, panC2, and Dijkstra).  In two sentences each, explain the most costly part of each algorithm in terms of v and e.
+
+- panC1: delete_min was the most expensive part with v^2 steps. This is from delete_min searching through the entire array to delete the minimum, followed by shifting all elements back.
+
+- panC2: decrease_key was the most expensive part with v*e steps. This is due to decrease_key potentially needing to be called each time a neighbor is checked, followed by moving that element across the entire array.
+
+- Dijkstra: sift down & bubble up are the most expensive parts with h*v & h*e, respectively. The cose comes from their while loops, potentially needing to move values across the entire array each time they are called. 
+
+Exercise 1 (4.1): Suppose Dijkstra's algorithm is run on the following graph, starting at node A.
+
+(a) Draw a table showing the intermediate distance values of all the nodes at each iteration of the algorithm.
+
+- No. That sounds like a lot of busy work, and I'd prefer to sleep than prove I understand memory diagrams for Dijkstra's algorithm again.
+
+(b) Show the final shortest path tree
+
+- Going from only using shortest path on the frontier:
+
+- A -> B -> C -> D -> G -> F -> H -> E
+
+Exercise 2 (4.4): Here's a proposal for how to find the length of the shortest cycle in an undirected graph with unit edge lengths
+
+When a back edge, say (v, w), is encountered during a depth-first search, it forms a cycle with the tree edges from w to v.
+
+  The length cycle is level[v] - level[w] + 1, where the level of a vertex is its distance in the DFS tree from the root vertex. This suggests the following algorithm:
+
+    Do a DFS search, keeping track of the level of each vertex.
+
+    Each time a back edge is encountered, compute the cycle length and save it if it is smaller than the shortest one previously seen
+  
+  Show that this strategy does not always work by providing a counterexample as well as a brief (one or two sentence) explanation.
+
+- As DFS tends to miss the shortest possible path by running with the first unexplored node it can find for each check, it's possible the shortest possible cycle could be missed as a means of encountering the back edge in part of a different, longer cycle caught by DFS.
+
+- EX: |V| = A, B, C, D, E, F. |E|= (A,B) (B,C) (C,D) (D,E) (E,F) (F,A) (F,A) (B,F). (A Cycle A-B-F exists. However, the DFS will run through the path A-B-C-D-E-F, missing the shorter cycle along the way.
+
+Exercise 3 (4.5): Often there are multiple shortest paths between two nodes of a graph. Give a linear-time algorithm for the following task.
+
+  Input: Undirected graph G = (V, E) with unit edge lengths; nodes u, v \in V
+
+  Output: The number of distinct shortest paths from u to v
+
+- Using BFS, check each connection at a node, adding them to a queue
+
+- Proceed as normal until a connection to node v has been found. If less-than the current shortest path, clear out all shortest paths. If equal, add that path to the shortest path collection
+
+Exercise 4 (4.6): Prove that for the array prev computed by Dijkstra's algorithm, the edges {u, prev[u]} (for all u \in V) form a tree
+
+- Since each node should have a connection to a previous node (outside of the source node), we can trace the edges backwards to form a tree backwards. Or not, I'm not sure and it's 3:30 AM.
+
+Exercise 5 (4.12): Give an O(|V^2|) algorithm for the following task
+
+  Input: An undirected graph G = (V, E); edge lengths l_e > 0; an edge e \in E.
+
+  Output: The length of the shortest cycle containing edge e.
+
+- Run Dijkstra's algorithm to gather all prev values in an array. Any back paths should count as a cycle and have its length recorded.
+
+- Run through the cycles once more to find the shortest cycle length.
+
+Exercise 6 (4.15): Shortest paths are not always unique: sometimes there are two or more different paths with the minimum possible length. Show how to solve the following problems in P((|V| + |E|) log(|V|) time
+
+  Input: An undirected graph G = (V, E); edge lengths l_e > 0; starting vertex s \in v
+
+  Output: A Boolean array usp[.]: for each node u, the entry usp[u] should be true iff there is a unique shortest path from s to u (Note: usp[s] = true)
+
+- Uhhh lmao xd
+
+- Run Dijkstra's algorithm to add all shortest path values to the array usp[u].
+
+- If a new path is found that is less than usp[u], replace it. If an equal path length is found for usp[u], change usp[u] to false.
+
+Exercise 7 (4.19): Generalized shortest-paths problem. In Internet routing, there are delays on lines but also, more significantly, delays at routers.
+
+This motivates a generalized shortest-paths problem.
+
+Suppose that in addition to ahving edge lengths {l_e : e \in E}, a graph also has vertex costs {c_v : v \in V}. Now define the cost of a path to be the sum of its edge lengths, plus the costs of all vertices on the path (including the endpoints).
+
+Give an efficient algorithm for the following problem
+
+  Input: A directed graph G = (V, E); positive-edge lengths l_e and positive vertex costs c_v; a starting vertex s \in V.
+
+  Output: An array cost[.] such that for every vertex u, cost[u] is the least cost of any path from s to u (i.e., the cost of the cheapest path), under the definition above.
+
+  Notice that cost[s] = c_s.
+
+- This just sounds like the PanD algorithm, but adding a line afte the "u.day + uv.delay" calculation to also include cost[u].
+
+- Sum all the values and assign it to cost[s].
+
+- I'm so burnt out and de-motiated to do anything; this otherwise 2 hour assignment took me 6 hours to complete.
+
+- Please give me a week with no homework. If you're a grader consider signing the petition at https://docs.google.com/forms/d/e/1FAIpQLSerhQgBGTSKv-aE9q1W_6xPLNQFWHZZZo8v-6uqTvgppWSPBQ/viewform.
+

@@ -1,0 +1,7 @@
+300 iterations from my Windows desktop computer: 3230, 3192, 3192
+
+(Average 3204)
+
+300 iterations from ssh link machine: 2724, 3288, 2646
+
+(Average 2886)

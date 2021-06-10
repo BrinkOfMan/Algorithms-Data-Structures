@@ -1,0 +1,75 @@
+(CQ1) Explain how you figured out the number of edges for a complete graph.  Is it related to one of the essential sums?
+
+- n * (n - 1) / 2
+
+-- This is related to the sum of all integers 1 to n (being n * (n + 1) / 2), as the number of unique edges per vertex decreases by one (if you were counting manually across every vertex)
+
+(CQ2) Explain how you figured out the number of edges for a complete bipartite graph.
+
+- (n / 2)^2
+
+-- Here, half of the points connected to all the other half of the points. This made each half connect to n points on the other side n times (n points * (n/2) connections)
+
+-- But, since we're only counting unique edges, the other half connecting to the original half are duplicates, and halves the amount of connections ((n/2) points * (n/2) connections)
+
+(CQ3) Explain your approach to estimating the number of edges in the triangulated_circle graphs.
+
+- Spent half an hour on this. No clue.
+
+(CQ4) Do you think there may be a relationship between priority queues and sorting algorithms?  Why or why not?
+
+- Absolutely. Finding the minimum value sounds like it will create problems in the future for incredibly large priority queses. 
+
+-- Sorting through the entire array to find the minimum each time delete_min() is called is inefficient, and sorting algorithms are likely able to aid in solving this inefficiency.
+
+(CQ5) Explain your approach to making this plot.
+
+- Going off the first number, I believed the pattern to be N+2, requiring N steps to find the min (at the last possible location), not moving any indices, then a call to decrease_key to change the value.
+
+-- I belive this would be the same number of steps if the minimum value were at the start of the array, as the rest of the array would need to be shifted over to the left (1 step each), bringing the total number of steps up to N again.
+
+(CQ6) Explain your approach to making this plot.
+
+- Here, delete_min() will just be the singular call. Now, the number of steps required to decrease_key from one side of the array to the other will still take N steps.
+
+####################################################
+
+For each of the following conceptual questions, imagine that we are running the panC2 algorithm on a square_grid graph with 100 vertices and 180 edges.
+
+####################################################
+
+(CQ7) How many times will we call the delete_min() function?  In addition to a number, please explain your answer in one sentence.
+
+- 100 times for 100 vertices to remove from the warning array
+
+(CQ8) How many steps do we need to count for each call to delete_min()?
+
+- If we are using the anansi template of 1 step per call, 100 steps for 100 calls.
+
+(CQ9) How many times will we call the nearby() function? (Please provide a specific number.)
+
+- We will call nearby 100 times, as this comes after deleting min, and we only call delete_min 100 times.
+
+(CQ10) How many steps do we need to count for each call to nearby()?  What is the fixed part, and what is the varying part?  Explain the numbers you get in one or two sentences.
+
+- 180 edges means there will be 180 pairs of vertices that will reference each other. This gives a fixed 360 steps.
+
+-- The varying part will come with how many warnings are issued. We can assume there will likely be a FIXED amount of 99 warnings towards nodes within nearby() (exclude the first warning in init())
+
+--- Outside of the fixed 459 steps, I couldn't tell ya.
+
+(CQ11) Approximately how many times will we call the decrease_key() function?  Why is it hard to give a precise answer, in advance, for the number of calls to decrease_key()?
+
+- At least 100 times, assuming the first warning will also be the last warning a vertex receivs throughout the entire algorithm.
+
+-- This number is difficult to give a precise answer to, as we aren't sure how many extra warnings outside of the initial warning a vertex will receive.
+
+(CQ12) Approximately how many steps should we count for each call to decrease_key(), assuming that the element we are changing is somewhere near the middle of the array?
+
+- We'd have a range of steps from 2 (already in the middle) to 52 (as far away from the middle as possible), giving us an average of 26 steps.
+
+(CQ13) In two or three sentences, explain your approach to estimating the number of steps for the points in the plot.
+
+- Too much to write down. I hope this equation makes sense.
+
+-- until(n + 1) + delete_min(n) + nearby(n*2) + nearby_for(2*edges + n-1 warnings) + decrease_key(n*1 assignments + n * n/4 swaps)

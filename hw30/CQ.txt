@@ -1,0 +1,58 @@
+Exercise 1: Explain the reduction from 3SAT to Independent Set in your own words (in about four sentences).
+
+- Third assignment I'm behind in WOOOOOOOOOOOOOOOOOOOOOOOO
+
+-- Will I get a break from group projects before the semester ends? WHO KNOWS?
+
+-- It sucks because Tanaka is in my PDC group project and he stopped being able to work on ADS the same day as myself
+
+-- We're both equally behind and can really only focus on end-of-semester team projects. I wish both of us had more time and energy to work finish everything.
+
+Exercise 2 (8.3): STINGY SAT is the following problem:
+
+given a set of clauses (each a disjunction of literals) and an integer k, find a satisfying assignment in which at most k variables are true, if such an assignment exists. 
+
+Prove that STINGY SAT is NP-complete.
+
+- A
+
+Exercise 3 (8.4): Consider the CLIQUE problem restricted to graphs in which every vertex has degree at most 3.
+
+Call this problem CLIQUE-3.
+
+(a) Prove that CLIQUE-3 is in NP.
+
+- No
+
+(b) What is wrong with the following proof of NP-completeness for CLIQUE-3?
+
+We know that the CLIQUE problem in general graphs is NP-complete, so it is enough to
+present a reduction from CLIQUE-3 to CLIQUE. Given a graph G with vertices of degree ≤ 3,
+and a parameter g, the reduction leaves the graph and the parameter unchanged: clearly
+the output of the reduction is a possible input for the CLIQUE problem. Furthermore, the
+answer to both problems is identical. This proves the correctness of the reduction and,
+therefore, the NP-completeness of CLIQUE-3.
+
+- It incorrectly assumes that I have the time and energy to finish all of my team assignments and individual assignments for my classes
+
+-- Obviously, they should have considered adding more hours into a day, and modifying my brain chemistry to not get fatigued following prolonged periods of project prototyping productivity.
+
+(c) It is true that the VERTEX COVER problem remains NP-complete even when restricted to
+graphs in which every vertex has degree at most 3. Call this problem VC-3. What is wrong
+with the following proof of NP-completeness for CLIQUE-3?
+We present a reduction from VC-3 to CLIQUE-3. Given a graph G = (V, E) with node degrees
+bounded by 3, and a parameter b, we create an instance of CLIQUE-3 by leaving the graph
+unchanged and switching the parameter to |V | − b. Now, a subset C ⊆ V is a vertex cover
+in G if and only if the complementary set V − C is a clique in G. Therefore G has a vertex
+cover of size ≤ b if and only if it has a clique of size ≥ |V | − b. This proves the correctness of
+the reduction and, consequently, the NP-completeness of CLIQUE-3.
+
+- A
+
+(d) Describe an O(|V|^4) algorithm for CLIQUE-3.
+
+- Starting to feel overwhelmed with how far behind I am in ADS xd xd xd xd xd :')
+
+Exercise 4 (8.14): Prove that the following problem is NP-complete: given an undirected graph G = (V, E) and an integer k, return a clique of size k as well as an independent set of size k, provided both exist.
+
+- A

@@ -1,0 +1,11 @@
+(CQ1) Are the number of steps more or less than the recursive version of DFS?  In practice, which version do you expect would be faster, when implemented in C++?
+
+- Only counting the explore vs. explore_loop funcitons, I believe the stack-based version of DFS will require fewer steps to search
+
+-- That being said, our anasi exercise include more explicit steps for stack management.
+
+--- I'm unclear if this will lead to an overall larger amount of steps. With recursion, the calls to stack management are implicit, but still exist.
+
+(CQ2) What is a situation where you might prefer to use breadth first search, rather than depth first search, to traverse a graph?
+
+- I'd want to use BFS to find the shortest path to a destination from the starting node.

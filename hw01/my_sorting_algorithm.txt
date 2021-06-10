@@ -1,0 +1,21 @@
+This algorithm will work through an array of size N, starting at index 0. 
+
+Here, the "end" of the comparisons E is initialized with value N.
+
+The goal is to find values that are larger than the initial index's value, and place the initial value 1 position behind the larger value until all are sorted from smallest to largest. 
+
+For each initial index i, compare i's value to i+1's value.
+
+IF i has a greater value compared to i+1, do not swap and move up to the next index (i+2, i+3, ..., E) and compare values again.
+
+Continue this pattern until an index j containing a greater or equal value to i's is reached. Swap values of i and j-1.
+
+Start comparing again with a new initial index i = j, following the pattern mentioned above.
+
+If your comparison index = E, loop back to comparison index = 0.
+
+If no swaps are made before reaching index i, A maximum has been found.
+
+Swap the values at index i and index E, then start with initial index = 0 again. Reduce E by 1.
+
+When E = 0, the algorithm has successfully sorted the array.

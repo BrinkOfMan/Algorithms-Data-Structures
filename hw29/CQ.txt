@@ -1,0 +1,44 @@
+Exercise 1 (8.1): Optimization versus search. Recall the traveling salesman problem:
+
+  TSP
+  Input: A matrix of distances; a budget b
+  Output: A tour which passes through all the cities and has length ≤ b, if such a tour
+  exists.
+
+The optimization version of this problem asks directly for the shortest tour.
+
+  TSP-OPT
+  Input: A matrix of distances
+  Output: The shortest tour which passes through all the cities.
+
+Show that if TSP can be solved in polynomial time, then so can TSP-OPT.
+
+- Once again, another day where I'm busy from 8AM - 1AM just working on team projects.
+
+-- HOOOOOOO boy do I want like... 6 more hours in a day so I can finish everything I need to.
+
+Exercise 2: Explain in your own words why there is no algorithm "terminates" as described in the box about Unsolvable problems.
+
+- A
+
+Exercise 3: Suppose we have a string of length 20 that needs to be cut at locations 3, 7, 11, and 14.
+
+The cost of a cut is the length of the string, as we start cutting.
+
+Consider the substring that goes from location 3 to location 11.
+
+In this part of the string, there is only one cut needed (at location 7) and the cost of making this cut is 8.
+
+Please write down all the minimum costs for the substrings that start or end at cuts (with default cuts at the start or end of the string), and organize this information in a table.
+
+That is, we want to know the minimum cost for the substring 0:3, 0:7, 0:11, 0:14, 0:20, 3:7, 3:11, 3:14 etc.
+
+At this stage, it is ok to work out the table entries by brute force… just as long as the costs are correct.
+
+- A
+
+Exercise 4: Given the table above, design a strategy for how to fill in the table gradually:
+
+where should we start, and how do later table entries depend on prior entries?
+
+- A

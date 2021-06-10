@@ -1,0 +1,59 @@
+CQ1: Please consider whether this function can produce any permutation whatsoever. Is there any ordering of the elements that cannot be chosen this way?  Why or why not?
+
+- I think randomly swapping values throughout the array should be able to produce a different arrangement of values, thus creating a permutation.
+
+- I'm not sure if there is any way of ordering elements that can't be produced via this method. My understanding is that smaller values are swapped with the starting value.
+
+CQ2: [For Bogo sort] How many possible permutations are there for five elements?  In a sentence or two, justify your answer.
+
+- 5! This is the nature of trying to find each possible permutation of N where possible combinations are whole numbers 1 -> N.
+
+CQ3: In a couple of sentences, explain how you calculated the values you added to the plot.
+
+- This answer is based on https://piazza.com/class/kl6lnaqur8y72p?cid=18 and following the instructor's reasoning
+
+- 10! produces 3628800 possible permutations. We should expect to call randomly_permutate that many times (10 steps each) and is_sorted 10! + 1 times (10 steps each)
+
+- 30! produces a gigantic number that I'm not writing down again. 30! * 30 steps each for randomly_permutate + (30! + 1) * 31 steps for is_sorted
+
+- Add 2 to both of these results for the setup steps (if you want to be exact)
+
+CQ4: In two or three sentences, explain how you derived your estimates for the plot.
+
+- I used the formula for the sum of numbers 1 - N + an extra N steps for setting up the while loop for each position:
+
+- (N(N+1))/2 +(N-1)
+
+- Ex: With 4 elements, we setup the for loop (1 step), and each setup of a while loop includes one extra step for the subsequent position, giving us (4(4+1))/2 + (4-1) = 10 + 3 = 13
+
+- Ex: For 6 elements, 6(6+1)/2 + (6-1) = 21 + 5 = 26
+
+CQ5 -  Is a reverse sorted array the worst case input for insertion sort?  Why or why not?
+
+- Yes! The first loop (through the array) remains a constant n-1 steps, BUT the second loop (which moves the value index by index) required the most amount of steps to swap every value to the opposite side of the array when arranged in a reverse-sorted order.
+
+CQ6 - Claim:  for any array with n elements, bubble sort will pass through the array at most n-1 times. Explain why this claim is true, in two or three sentences.
+
+- Bubble sort will place a value as high as possible for a single loop through the array. It will do this for multiple values throughout the loop.
+
+- Assuming all values are not where they should be, and as far away from where they should be (the worst case scenario), only one value would be placed where it needs to be per loop through the array
+
+- If some elements are already in place (smallest at index 0, largest at index n), bubble sort will not have to use a loop thorugh the array to place the value where it should be
+
+- So, the maximum number of loops through an array comes from what was described earlier.
+
+- In this scenario, the final 2 out-of-place elements get sorted in a single loop through the array, negating the need for another loop to move just one of the two values.
+
+CQ7 - In an array of n elements, what is the maximum number of swaps used by selection sort to sort the array?  Is this the best possible number of swaps?  Justify your answer in two or three sentences.
+
+- Since we find the minimum value each sweep through the array, and start searching at the next relatively lowest value, the maximum amount of swaps needed is n-1
+
+- It is n-1 instead of n for the same case as in bubble sort requiring n-1 pass-throughs. The final swap will swap the last 2 unsorted values in the worst case.
+
+CQ8 - In two or three sentences, explain (in your own words) why the above recursive algorithm actually works.
+
+- This algorithm works by recursively comparing the largest values of separate halves until only 2 numbers are left, at which point the numbers are swapped.
+
+- This action "moves" larger numbers farther into the array as more chances to swap the higher value ahead take place
+
+- I've spent 5 hours on this and my brain is too dead to think about it more. Time for slee- PDC and CS Capstone work!

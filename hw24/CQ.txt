@@ -1,0 +1,145 @@
+For each exercise, please start by making a specific example (with actual numbers) of the problem and solving it, to help understand the problem.
+
+Please include your example at the start of your answer, and then proceed with designing an appropriate algorithm to solve the problem.
+
+Exercise 6.1: A contiguous subsequence of a list S is a subsequence made up of consecutive elements of S. For instance, if S is
+
+5, 15, -30, 10, -5, 40, 10
+
+Then 15, -30, 10, is a contiguous subsequence but 5, 15, 40 is not. Give a linear-time algorithm for the following task:
+
+Input: A list of numvers, a_1, a_2, ..., a_n.
+Output: The contiguous subsequence of maximum sum (a subsequence of length zero has sum zero)
+
+For the preceeding example, the answer would be 10, -5, 40, 10, with a sum of 55.
+
+(Hint: For each j ∈ {1, 2, . . . , n}, consider contiguous subsequences ending exactly at position j.)
+
+- Well, this hint already gives an example and a solution; I'm not going to create a new one, as I understand we're adding up the sum of different "suffixes" of S.
+
+- We can approach this similar to the first common subproblem (input x_1 -> x_n, subproblem x_i -> x_1)
+
+- For each suffix of S: check the sum of all contiguous elements, keeping track of the maximum
+
+- After checking each suffix: compare all the max values for each suffix, and return the largest value.
+
+Exercise 6.2: You are going on a long trip. You start on the road at mile post 0.
+
+Along the way tehre aer n hotels, at mile posts a_1 < a_2 < ... < a_n, where each a_i is measured from the starting point.
+
+The only places you are allowed to stop are at these hotels, but you can choose which of the hotels you stop at.
+
+You must stop at the final hotel (at distance a_n), which is your destination.
+
+You'd ideally like to travel 200 miles a day, but this may not be possible (depending on the spacing of the hotels). If you travel x miles during a day, the penalty for that day is (200 - x)^2.
+
+You want to plan your trip so as to minimize the total penalty—that is, the sum, over all travel days, of the daily penalties.
+
+Give an efficient algorithm that determines the optimal sequence of hotels at which to stop.
+
+- Example: hotels at mile 0, 200, 250, 400, 600, 620
+
+- Optimal path: 2 -> 4 -> 6 with penalties 0, 0, 400
+
+- Suboptimal path: 2 -> 4 -> 5 -> 6 with penalties 0, 0, 0, 32,400
+
+- We may not want to choose the shortest path (greedy style), as it could set us up for a terrible sequence of hotel visits along the way
+
+- At each hotel, check the next hotel for its penalty. Assign that value to a temp "max penalty" variable.
+
+- Check subsequent hotels, repeating this until a distance of 200 is reached. At this point, check hotels beyond 200 distance, stopping if you reach a hotel that has a penalty larger than "max penalty"
+
+- I think this would have time complexity O(n^2), as it's similar to common subproblem iii.
+
+Exercise 6.3: Yuckdonald's is considering opening a series of restaurants along QVH.
+
+The n possible locations are along a straight line, and the distances of these locations from the start of QVH are, in miles and in increasing order,
+
+m_1, m_2, ..., m_n. The constraints are as follows:
+
+At each location, Yuckdonald's may open at most one restaurant. The expected profit from opening a restaurant at locaiton i is p_i, where p_i > 0 and i = 1, 2, ..., new
+
+Any two restaurants should be at least k miles apart, where k is a poisitive integer.
+
+- Example: restaurants at mile 50 (200 profit), 50 (100 profit), 70 (200 profit), 90 (10 profit), 90(200 profit)
+
+-- Our answer will be the locations 1, 3, and 5
+
+- I think this is something like the longest increasing subsequence problem, where we keep track of the most amount of profit available alongside having as many restaurants as possible.
+
+- Define P[i] for each valid coniguration of a longest subsequence, holding the sum of all profit for that subsequence
+
+- For each location i, check if a restaurant has been opened there. If not, the optimal value will be the optimal profit from a valid subsequence using only the locations m_1, m_2, ..., m_(i-1)
+
+-- (basically, check P[i - 1])
+
+- If you build a restaurant, you need to check its expected profit, and see if the next nearest location should have a restaurant opened with a max function of possible subsequences.
+
+- After checking all possible longest subsequences, return the max value of P.
+
+Exercise 6.8: Given two strings x = x_1x_2...x_n and y = y_1y_2...y_m, we wish to find the length of their longest common substring
+
+that is, the largest k for which there are indices i and j with x_ix_i+1...x_(i+k-1) = y_jy_j+1...y_(j+k-1)
+
+Show how to do this in time O(mn)
+
+- Example: HIEROGLYPHOLOGY, MICHAELANGELO
+
+- Longest common substring: HELLO
+
+- This looks like the common subproblem ii. And I'll base my algorithm on that
+
+- Create a 2D array (similar to our edit distance) S[i][j] that holds the length of the longest common substring that ends with matching x_i and y_j
+
+- (For each entry, if the two end indices don't match, hold value 0)
+
+- At each entry, we can add a value to the longest common substring that ends with matching string indices x_(i-a number), y_(j - a number) + 1.
+
+- Since we're checking all possible row-by-column substrings, I believe this should run in O(mn) time.
+
+Exercise 6.7: A subsequence is palindromic if it is the same whether read left to right or right to left. For instance, the sequence
+
+A,C,G,T,C,A,A,A,A,T,C,G 
+
+has many palindromic subsequences, including "A,C,G,C,A" and "A,A,A,A"
+
+Devise an algorithm that takes a sequence x[1...n] and return the (length of the) longest palindromic subsequence. It's running time should be O(n^2)
+
+- Example: T E H X U L P Q E U O H S M T P H
+
+- Answers: T E L E T, H P Q P H
+
+- Again, we can build a 2D array P to hold longest palindromic subsequence for start/end endices of x P[i][j] 
+
+- If the indices don't match, we'd normally input 0
+
+-- BUT!!! We can check for a longer palindrome with either 1 less character from the left, or 1 fewer character from the right of the substring. Check the max palindrome length of both and return the max value
+
+- Otherwise, we know the indices match, and the longest palindromic subsequence will come from the longest palindromic subsequence of size x(left-1, ..., right-1) + 2 (because the 2 new character match)
+
+- Also, the value at the starting character (i-j = j-i) will just be 1, as there is only 1 character present in the longest palindromic subsequence  
+
+Exercise 6: Create another example to show that the elaborated greedy algorithm would not always work either.
+
+- If you had to make change for 85 cents, with coins 35, 22, and 15
+
+
+-- We would try with 2 30s (85 - 60 = 15, doesn't work)
+
+-- Then, 1 30 and a 2 22s (85 - 30 - 44 = 11, doesn't work)
+
+-- 3 22s (85 - 66 = 19, doesn't work)
+
+-- 2 22s and 2 15s (85 - 44 - 30 = 11)
+
+-- 1 22 and 3 15s (85 - 22 - 60 = 3)
+
+-- 5 15s (85 - 75 = 10)
+
+-- This sequence won't be able to make change, but using 2 35s and a 15 will!
+
+Exercise 7: Explain why the Dynamic Programming solution to the change making problem will always yield the correct answer.
+
+- Removing the values of coins from the amount of change needed that aren't attainable will continually negate combinations of all coins that don't eventually reach 0
+
+- If you exhaust all possible coin combinations, and have yet to reach a value of 0, you can be certain you've either found a way to make change, or it doesn't exist

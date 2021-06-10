@@ -1,0 +1,35 @@
+(CQ1) Explain your strategy for solving these loop exercises, in two or three sentences.
+
+- Like we used to do in software design, I was following the values of each loop and giving the corresponding outputs based on each values
+
+- I guess I was describing the program execution step by step
+
+(CQ2) Explain your strategy for solving these recursion exercises, in two or three sentences
+
+- Once again, just following the program as it would run.
+
+- For the last run, I found the pattern out pretty quickly and just continued it to save time
+
+(CQ3) Explain how you obtained the appropriate y-values for your plot, in two or three sentences. 
+
+- Here, I saw a pattern developing in the flame graph for each subsequent partition. 
+
+- I have no idea the exact amount of extra steps going from 5 to 7 elements took, but I believe it's somewhat linear from there ( n * log(n) ).
+
+(CQ4) Explain how you obtained appropriate y-values for your plot, in two or three sentences.
+
+- Going off the glame graph, it seemed like each new indent of quick_sort added 11 steps.
+
+- The final call would only add 4, as it calls range to check just a single number before concluding.
+
+- Hence, I used n * 11 + 4 = predicted steps taken
+
+(CQ5) Explain how you obtained the appropriate y-values for your plot, in two or three sentences.  
+
+- I don't think the method was really appropraite (as it was off by 40% come the given 1,000,000 numbers).
+
+- I would take 2.5X the value of N X times to reach the next value, where X = how many doubles of N were needed to reach the next N
+
+(CQ6) We've now seen a variety of classic sorting algorithms; which one do you like best, and why?
+
+- Either Quick or Insertion sort. Quick gives me a feeling like it knows it's the all-around best, and I found insertion to be the most fun to watch on a visualizer. 

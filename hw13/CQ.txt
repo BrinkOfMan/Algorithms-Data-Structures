@@ -1,0 +1,39 @@
+(CQ1) If the exact number of steps for algorithm that takes input of
+size n is 9*n + 200, why is n the associated concise cost function?
+
+- Working within a factor of 1000, n will always be within a factor of 1000 for 9n. It's also easy to read.
+
+(CQ2) What is the concise cost function for 9*n^2 + 200?  Explain
+your answer.
+
+- n^2. In general, finding the concise cost can allow us to reduce any coefficient 1/1000 to 1000 * n, as the growth of step cost for coefficients are linear.
+
+-- For n^X, we must keep the exponent, as that growth is exponential and would break a factor of 1000 when compared to just n.
+
+ (CQ3) What is the concise cost function for 9*n^2 + 15n + 200?  Explain
+your answer.
+
+- n^2. It seems like, after n = 1000, if any of the added elements are within a factor of 1000 of the largest estimate, they can be disregarded.
+
+(CQ4) What is the concise cost function for 9*n^5 + 9*n^2 + 15n + 200?  Explain your answer.
+
+- n^5. After n=1000, n^5 is within a factor of 1000 of 9n^5 + 9n^2 + 15n + 200 
+
+-- A factor of ~9, to be precise
+
+(CQ5) What is the concise cost function for 2^n + n^2 + 1000*n?  Explain
+your answer.
+
+- 2^n. See the above reason.
+
+-- The difference between 2^n and all the other added elements is so large, plugging in this formula to find the factor using n=1000 took up more than 90 digits of 0 with a ratio of 1.00000... 
+
+--- (Well within a factor of 1000)
+
+(CQ6) If you have a tree with 5 branches at each node, and height 3, how many nodes are there total on the tree?
+
+- 156. 5^0 + 5^1 + 5^2 + 5^3
+
+(CQ7) If you have a tree with 5 branches at each node, and height log5(n), how many nodes are there on the lowest level (the leaves)?)
+
+- 5^n

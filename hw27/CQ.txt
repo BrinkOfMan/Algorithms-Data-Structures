@@ -1,0 +1,40 @@
+For each exercise, analyze the asymptotic running time (theta), and explain your analysis
+
+Exercise 6.1 (sum of contiguous subsequence)
+
+- Linear! Θ(n) where n = number of elements in sequence
+
+-- This is because we run through the array JUST ONCE, covering all values of n.
+
+Exercise 6.2 (hotel stops)
+
+- Quadratic! Θ(n^2) where n = number of hotel stops
+
+-- Here, we have a nested loop. Both the outer loop rungs through all elements of our hotels array (n), and the inner loop *kind of* also runs through all elements of the array (n)
+
+-- So *n* steps for the inner loop * n steps in the outer loop = n^2, and we have Θ(n^2)
+
+Exercise 6.3 (Yuckdonald's)
+
+- Linear! Θ(n).
+
+-- Here, we're filling up the max_expected array call by call, each call taking linear time to execute. We only need n recursive calls to fill out each successive index. 
+
+-- Therefore, Θ(n)
+
+Exercise 6.8 (longest common substring)
+
+- Yo we quadratic Θ(|X|*|Y|)
+
+-- This is due to the nested loop. Outer loop iterates |X| times, each iteration comparing values in linear time |Y| times
+
+Exercise 6.7 (palindromic sequence)
+
+- Quick shoutout to the CS technical interview workshop. They explained this one while going through a mock interview and I actually understand it a bit.
+
+- We quadratic Θ(2^n) where n = number of characters
+
+-- This comes from the worst case, wherein there are no matching characters in the string, and each call to check for recursion necessitates 2 more calls.
+
+-- So, worst case of 2 calls (for the 2 cases) to the power of n recursive checks, leading to Θ(2^n)
+

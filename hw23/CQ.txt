@@ -1,0 +1,64 @@
+Exercise 1: Create an example of a knapsack problem with four items, and solve it by hand.  
+Provide both the problem and the solution. ;)
+
+- See Exercise1.png
+
+Exercise 2: Create an example of a knapsack problem with a different set of five items, and solve it by hand.  Provide both the problem and the solution.
+
+- See Exercise2.png
+
+Exercise 3: Use the approach suggested in the book to solve the two examples of knapsack that you created above (show the table of solutions for smaller weights, and explain which entries are connected).
+
+- See Exercise3.png
+
+Exercise 4: In about three sentences, explain why the approach to solving the knapsack problem given in the book is correct.
+
+- When solving the subproblem of K(.,j-1), removing a possible entry should weed out the unnecessary items for a given max weight.
+
+- This can be seen in the tables for Exercise 3, where we can infer which nodes are most important based on looking at the previous row (j-1) and seeing the same max value.
+
+Exercise 6: Exercise 6.17 (change-making):
+
+Given an unlimited supply of coins of denominations x_1, x_2, ..., x_n, we wish to make change for a value v;
+
+That is, we wish to find a set of coins whose total value is v. This might not be possible:
+
+For instance, if the denominations are 5 and 10 then we can make change for 15 but not for 12. 
+
+Give an O(nv) dunamic-programming algorithm for the following problem.
+
+  Input: x_1, ..., x_n; v.
+
+Question: Is it possible to make change for v using coins of denominations x_1, x_2, ..., x_n?
+
+- Oh man. Probably not in O(nv) time.
+
+- This will run similarly to the knapsack problem.
+
+- (Initial check) For x_1, ..., x_n: See if v % x_i == 0 (divisible just using that coin)
+
+- Else, run this knapsack-esque stuff:
+
+- For the amount of coins 2 -> n: Check if successive multiple of each coin denomination sum to equal value
+
+-- Ex: for x_1 = 2, x_2 = 7, x_3 = 15; v = 95
+
+-- Check all single coin: 95 % x_1 == 0? (no), 95 % x_2 == 0? (no), 95 % 3 == 0? (no)
+
+-- Check all possible sum of 2-coin pair multiples: 95 % (X * x_1 + Y * x_2) == 0? (for some integer X and Y such that their sum is <= v)
+
+-- If that doesn't work, check all 3-coin pair multiples: 95 % (X * x_1 + Y * x_2 + Z * x_3) == 0? (for some integer X and Y such that their sum is <= v)
+
+-- If none of these work, you can not make change for v given these coin denominations.
+
+- This probably isn't O(nv) time but it should work!
+
+Exercise 7: In your own words (perhaps about four sentences), explain what it means to design a dynamic programming algorithm.
+
+As part of your answer, use the longest increasing subsequence problem and knapsack problem as examples.
+
+- Designing a dynamic programming algorithm is about finding a way to break a large problem/task into a successive number of subtasks, each contributing to a portion of the overall solution.
+
+- To give an example, the knapsack problem requires us to maximize value within a given space; a daunting challenge at first, breaking down the large task into smaller tasks of fewer items and less weight make the bigger picture clearer over time.
+
+- Another example involves the longest increasing subsequence problem, wherein we need to find the longest similar sequence of characters between some strings. This is broken down and solved via starting at each character in a string and finishing the LIS.

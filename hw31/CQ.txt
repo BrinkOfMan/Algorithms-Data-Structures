@@ -1,0 +1,36 @@
+Exercise 1 (9.1): . In the backtracking algorithm for SAT, suppose that we always choose a subproblem (CNF
+formula) that has a clause that is as small as possible; and we expand it along a variable that
+appears in this small clause. Show that this is a polynomial-time algorithm in the special case
+in which the input formula has only clauses with two literals (that is, it is an instance of 2SAT).
+
+- Only able to catch up on one ADS assignment today. It's kind of progress? But I'm technically still the same number of assignments behind
+
+- It's 2:30AM and I've just finished all my final project BS; I should really sleep (mental health awareness ✅), so maybe I'll finish this over the next few days?
+
+-- Just gotta get more efficient in my productivity. I'm working all the time, just that in constantly working my speed/efficiency has tanked.
+
+Exercise 2 (9.2): Devise a backtracking algorithm for the RUDRATA PATH problem from a fixed vertex s. To fully
+
+specify such an algorithm you must define:
+
+(a) What is a subproblem?
+
+- The rudrata path for a selected next index i (it will be the new s) to test its length against other choices 
+
+(b) How to choose a subproblem.
+
+- Shoot. Probably a hint in the section (why'd I stop reading at chapter 9?? Why read all of chapter 8 just to stop at the last section before this homework? xd)
+
+(c) How to expand a subproblem.
+
+- :')
+
+Exercise 3: Design an algorithm to list all possible subsets of a set of n elements, in sufficient detail that you could implement it in C++
+
+- A. This seems like you're asking for extremely detailed pseudocode. Might take extra time to write it in C++ then
+
+Exercise 4: Design an algorithm for enumarating all k-element subsets of a set of n elements,
+
+in such a way that the running time is proportional to the number of relevant subsets, rather than 2^n
+
+- You got it boss

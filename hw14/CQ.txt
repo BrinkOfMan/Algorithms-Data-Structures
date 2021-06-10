@@ -1,0 +1,145 @@
+(CQ1) In your own words, with your own example, explain this property of exponents.
+
+- Considering exponents represent the number of times to multiply a number, multiplying two of the same base with different exponents can be represented as that base to the power of the sum of the exponents.
+
+-- Ex: 2 * 2 * 2 * 2 * 2 = (2 * 2 * 2) * (2 * 2) = 2^3 * 2^2 = 2^(2+3) = 2 * 2 * 2 * 2 * 2
+
+(CQ2) In your own words, with your own example, explain this property of exponents.
+
+- Having the same base(a)-exponent(b) pair be multiplied (c) times means we can represent the expression as a^(b*c)
+
+-- Ex: 2 * 2 * 2 * 2 * 2 * 2 = (2 * 2 * 2)*(2 * 2 * 2) =  (2^3)*(2^3) = (2^3)^2 = 2^(3*2) = 2^6 = 2 * 2 * 2 * 2 * 2 * 2
+
+(CQ3) What pattern do you notice as you analyze the cost of the nested
+loops?  Do you think there may be loops that look similar to the ones above,
+yet do not follow the pattern of costs?
+
+- nested loops appear to follow the exponent properties described above. These specific nested loops tend to have n steps with n calls = n * n = n^(1+1) = n^2
+
+(CQ4) In your own words, with your own example, explain this property of logarithms.
+
+- With logarithms, we're playing with powers of a base. Applying the same logarithm base to two numbers should produce the same sum of powers that applying the same base do the product of those numbers should. 
+
+-- log2(8) + log2(16) = 3 + 4 = 7 = log2(16*8) = log(128) = 2^7
+
+(CQ5) In your own words, with your own example, describe this property of logarithms.
+
+- Demonstrated below, by shifting the base with the number having the logarithmic function applied to it, we shift the resulting base-exponent pairs to give the same result.
+
+-- 8^(log_2(4)) = 8^2 = 64
+
+-- 4^(log_2(8)) = 4^3 = 64
+
+(CQ6) This sum looks like one of our essential sums.  What is the result of adding up these powers of 4?
+
+- Adding up consecutive powers of 4 from 4^0 + 4^1 + ... 4^n:
+
+-- (4^(n + 1) - 1) / (4 - 1)
+
+(CQ7) The form of this sum of powers of 4 resembles the second property of logs above.  How can we write the sum (approximately) as a n to some power, e.g. is it close to n^1 or n^2?
+
+- How does it resemble the second property of logs? For some number x and power n, the exact number is:
+
+-- (x^(n + 1) - 1)/ (x - 1)
+
+- Are we supposed to say n^(log4(4))?
+
+-- In that case, this particular case of having a depth of 2 gives us: 4^(log4(16)) = 16^(log4(4)) = 16. This would mean we should expect it to be n^1 ?
+
+--- I'm so confused as to what he expects from this.
+
+(CQ8) What is the concise cost function for the total number of dots in recA1?  Please write your answer as n to some power, and explain your reasoning.
+
+- n^1. Considering the sum of consecutive "d" powers of 3 is ((3^d+1) - 1) / 2, we should always stay within a factor of 1000.
+
+-- Here, n^1 means the value we send to the function "h(n);" with a depth d=log_3(n).
+
+-- After n=1000, taking the ratio of ((3^(d+1) - 1) / 2)/(3^d) is nearly 1.5, well under 1000.
+
+(CQ9) What is the concise cost function for the number of dots printed at the greatest depth (the leaves of the recursion tree)?  Please write your answer as n to some power, and explain your reasoning.
+
+- n^1. We call the function with n=9, we have 9 dots at the greatest depth.
+
+-- 3^(log_3 (9)) is the exact number of dots printed at the greatest depth.
+
+(CQ10) What is the concise cost function for the total number of dots (not just the leaves)?  Please write your answer as n to some power, and explain your reasoning.
+
+- n^1. This follows the exact same logic as described in CQ8. Not writing it all out again.
+
+(CQ11) What is the concise cost function for the total number of dots?  Please write your answer as n to some power (not necessarily an integer), and explain your reasoning.
+
+- n^1.5. No idea and I've spent 2 hours on this assignment already. Just want it to be over with.
+
+(CQ12) What is the concise cost function for the total number of dots?  Please write your answer as n to some power (not necessarily an integer), and explain your reasoning.
+
+- n^1. Gonna ask about these tomorrow. Hopefully it's discussed.
+
+(CQ13) Let's look for a more general formula.  Suppose we have a recursive function that calls itself a times (where a is a fixed number, like 2), and each time it calls itself with n/b as the argument (where b is another fixed constant, like 3).  In this more general case, what would the number of recursive calls be?  If possible, write your formula as n to some power involving a and b.
+
+- n^(log_b(a)) ?
+
+-- For recB: n = 27, b = 3, a = 2. 27^(log_3(2)) = 8, which matches the number of calls at the largest depth. I'm not sure.
+
+(CQ14) What is the concise cost function for the total number of dots?  Please write your answer as n to some power, and explain your reasoning.
+
+- n^2. This should always stay within a factor of 1000 for the sum of all dots where #dots(n) = (3^log_3(n))^2 * 3 (except for the initial recursive call, which is just (3^log_3(n))^2).
+
+(CQ15) What is the concise cost function for the total number of dots?  Please write your answer as n to some power, and explain your reasoning.
+
+- n^2 again. This should also stay within a factor of 1000 for the sum of all dots. I'm tired.
+
+(CQ16) What is the concise cost function for the total number of dots?  Please write your answer as n to some power, and explain your reasoning.
+
+- n^1. At this point I'm just giving the largest number of dots at a level.
+
+(CQ17) Let's look for a more general formula.  If the cost at the root is large, how can we describe the cost of the entire calculation?
+
+- Oh, hey, did I do it right? Just give the power of whatever is sent into the function to get whatever number of dots is at the root.
+
+(CQ18) What is the concise cost function for the total number of dots?  Please write your answer as n to some power multiplied by another function of n.  Explain your reasoning.
+
+- n^1 * (log_3(n) + 1). We're printing n^1 dots depth+1 times.
+
+(CQ19) What is the concise cost function for the total number of dots?  Please write your answer as n to some power multiplied by another function of n.  Explain your reasoning.
+
+-n^2 * (log_2(n) + 1). We're printing n^2 dots depth+1 times.
+
+(CQ20) Let's look for a more general formula.  Suppose we have a recursive function that calls itself a times (where a is a fixed number, like 2), and each time it calls itself with n/b (where b is another fixed constant, like 3).  If the cost at the root is similar to the number of leaves, what do you think the total cost will be?  If possible, write your formula as n to some power involving a and b, multiplied by another function.
+
+- n^(log_b(a)) * (log_a(n) + 1)
+
+(CQ21) Give an example of an exact cost that is 𝚹(n2), and an example of an exact cost that is not 𝚹(n2).  In each example, explain why the example is correct.
+
+- selection sort is O(n^2), as it goes through the array of n items n times. Heap sort it O(n*log(n)), as it generally goes through the height of the array n times.
+
+(CQ22) Why do you think that the "givens" about the domain and range of the functions f and g are part of the definition?
+
+- They represent the functions that would otherwise be used in big O notation. 
+
+(CQ23) Type in the complete definition for "Big O" (don't copy paste) to help you remember it (and include the first part!).
+
+- Assume f and g are functions from the positive integers to positive reals.
+
+-- f = O(g) means that there exists a fixed value c>0, such that f(n) <= c*g(n) for all n >= 1.
+
+--- The statement f = O(g) is stated as "f is O of g"
+
+(CQ24) Type in the complete definition for 𝛀 (don't copy paste) to help you remember it.
+
+- Assume f and g are functions from the positive integers to positive reals.
+
+-- f = 𝛀(g) AKA "f is Omega of g" means that there exists a fixed value c > 0, such that f(n) >= c*g(n) for all n >= 1.
+
+--- Alternatively, we could say that f = 𝛀(g) means the same thing as g = 𝛀(f).
+
+(CQ25) Type in the complete definition for 𝚹 (don't copy paste) to help you remember it.
+
+- Assume f and g are functions from the positive integers to positive reals. 
+
+-- f = 𝚹(g) AKA "f is Theta of g" means that there exists a fixed value c > 0, such that g(n)/c <= f(n) <= c*g(n) for all n >= 1.
+
+--- Alternatively, we could say that f = 𝚹(g) means the same as f = 𝚶(g) and f = 𝛀(g).
+
+
+
+This assignment kinda stinky. Took me way too long to complete.

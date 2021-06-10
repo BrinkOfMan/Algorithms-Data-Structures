@@ -1,0 +1,161 @@
+Exercise 1: Is n^2.5 = 𝚶(n^3)?  Why or why not?
+
+- Yes. Set c = 1
+
+- Here, n^2.5 <= 1*n^3 for all n >= 1.
+
+Exercise 2: Is n^2.5 = 𝛀(n^3)?  Why or why not?
+
+- No. Set c = 1.
+
+- Here, n^2.5 ! >= 1*n^3
+
+- Any higher value for c will also yield n^2.5 ! >= c*n^3
+
+Exercise 3:  If f(n) = 𝛀(g(n)), does that imply that f(n) + 1000 = 𝛀(2 * g(n))?  Why or why not?
+
+- Yes. As long as both f(n) and g(n) are in the same scope of power (n^x), there should exist a value c > 0 such that f(n) + 1000 = 𝛀(2 * g(n)) if f(n) = 𝛀(g(n)).
+
+Exercise 4: What is the cost (time complexity), using 𝚹, of insertion sort?  Explain your answer.
+
+- time_Complexity(insertion_sort) = 𝚹(n^2). With insertion sort, we will likely compare + swap elements of the array n (if every element is in place already) to n^2 (all elements are out of place and need to be swaped across the array) times.
+
+Exercise 5: What is the time complexity (using 𝚹) of selection sort?  Explain your answer.
+
+- time_Complexity(selection_sort) = 𝚹(n^2). Here, we're also between n (all elements are in place) and n^2 (search the entire array every time to find smallest value) steps.
+
+Exercise 6: What is the cost (using 𝚹) of doing n pushes with a stack implemented with the "increase by three" strategy?  Explain why.
+
+            What is the cost per push (that is, the average cost), again expressed with 𝚹?
+
+- cost(n_pushes) = 𝚹(avg_size * n/3). Here, we're doing avg_size steps (copying over every value for the size of the array) every n/3 steps.
+
+-- the average cost(per_push) = 𝚹(avg_size/3), as we're only copying the array every 3rd push.
+
+Exercise 7: What is the cost (using 𝚹) of doing n pushes with a stack implemented with the "increase by doubling" strategy?  Explain why. 
+
+            What is the cost per push (that is, the average cost), again expressed with 𝚹?
+
+- cost(n_pushses) = 𝚹(avg_size * n/avg_size). Here, we're doing avg_size steps for each time avg_size pushes are called.
+
+-- the average cost(per_push) = 𝚹(avg_size / avg_size), or 𝚹(1). 
+
+Exercise 8 (2.3): Section 2.2 describes a method for solving recurrence relations which is based on analyzing the recursino tree and deriving a formula for the work done at each level.
+
+Another (closely related) method is to exapand out the recurrence a few times, until a pattern emerges.
+
+For instance, let's start with the familiar T(n) = 2T(n/2) + O(n). Think of O(n) as being <= cn for some constant c,
+
+So, T(n) <= 2T(n.2) + cn. 
+
+By repeatedly applying this rule, we can bound T(n) in terms of T(n/2), then T(b/4), then T(n/8), and so on, at each step getting closer to the value of T(.) we do know, namely T(1) O(1).
+
+  T(n) <= 2T(n/2) + cn
+          2[2T(n/4) + cn/2] + cn = 4T(n/4) + 2cn
+          4[2T(n/8) + cn/4] + 2cn = 8T(n/8) + 3cn
+          8[2T(n/16) + cn/8] + 3cn = 16T(n/16) + 4cn
+
+A pattern is emerging... the general term is:
+
+  T(n) <= 2^k * T(n/2^k) + kcn
+
+Plugging in k = log_2(n), we get T(n) <= nT(1) + cn*log_2(n) = O(n*log(n))
+
+(a) Do the same thing for the recurrence T(n) = 3T(n/2) + O(n). What is the general k-th term in this case? And what value of k should be plugged in to get the answer?
+
+- T(n) <= 3T(n/2) + cn
+
+-         3[3T(n/4) + cn/2] + cn = 9T(n/4) + 5(cn/2)
+
+-         3^k * T(n/2^k) + (2cn((3/2)^k)
+
+- I think believe we plug in k = log_3(n), as this recurrence calls itself 3 times (a = 3), and the depth would therefore be log_3(n).
+
+(b) Now try the recurrence T(n) = T(n - 1) + O(1), a case which is not covered by the master theorem. Can you solve this too?
+
+- No idea. I already spent 30 minutes on part a trying to figure out how the heck to do this. Hope it's explained thoroughly in class today.
+
+Exercise 9 (2.4): Suppose you are choosing between the following three algorithms:
+
+A: solves problems by dividing them into fice subproblems of half the size, recursively solving each subproblem, and then combining the solutions in linear time.
+
+B: solves problems of size n by recursively solving two subproblems of size n-1 and then combining the solutions in constant time.
+
+C: solves problems of size n by dividing them into nine subproblems of size n/3, recursively solving each subproblem, and then combining the solutions in O(n^2) time.
+
+What are the running times of each of these algorithms (in big-O notation), and which would you choose?
+
+- A: T(n) = 5T(n/2) + 𝚶(n)
+
+-- a = 5, b = 2, d = 1. log_2(5) = ~2.3 > 1. 
+
+-- d < log_b(a), so runtime will be 𝚶(n^log_b(a)) = 𝚶(n^2.3)
+
+- B: T(n) = 2T(n-1) + 𝚶(1)
+
+-- a = 2, b = ???, c = 0
+
+-- I have NO clue what the runtime of this would be.
+
+- C: T(n) = 9T(n/3) + 𝚶(n^2)
+
+-- a = 9, b = 3, d = 2
+
+-- log_3(9) = 2 = 2. So, 𝚶(n^2 * log(n))
+
+- I'd use algorithm C, as it has a slightly lower order exponent compared to algorithm A.
+
+Exercise 10 (2.19): A k-way merge operation
+
+Suppose you have k sorted arrays, each with n elements, and you want to combine them into a single sorted array of kn elements.
+
+(a) Here's one strategy: Using the merge procedure from section 2.3, merge the first two arrays, then merge in the third, then merge in the fourth, and so on.
+
+What is the time complexity of this algorithm, in terms of k and n?
+
+- Let T(n) be the time to merge arrays 1 to k.
+
+- This consists of the time taken to merge arrays 1 to k − 1, and the time taken to merge the resulting array of size (n − 1)k with the current array is 𝚶(nk)
+
+- So, 𝚶(nk^2)
+
+(b) Give a more efficient solution to this problem, using divide-and-conquer.
+
+- Divide the arrays into two sets, each of k/2 arrays
+
+- Recursively merge the arrays within the two sets, and merge the resulting two sorted arrays into the output array
+
+- This recurrence works with the master theorem, and would give us T(k) = 𝚶(nk log(k)).
+
+Exercise 11 (2.20): Show that an array of integers x[1 ... n] can be sorted in 𝚶(n + M), where
+
+  M = max x_i - min x_i.    <--- I do not understand the book notation of this
+
+For small M, this is linear time: why doesn't the 𝛀(n * log(n)) lower bound apply in this case?
+
+- Well, if the array is already sorted, we only need to make n comparisons to verify the array has been sorted.
+
+- This stays well under n + M steps, and can therefore be sorted in 𝚶(n + M).
+
+- The lower bound doesn't apply in this case, as there would be no recursive calls involved in sorting the array.
+
+Exercise 12 (2.18): Consider the task of searching a sorted array A[1 ... n] for a given element x: a task we usually perform by binary search in time O(log(n)).
+
+Show that any algorithm that accesses the array only via comparisons (that is, by asking questions of the form "is A[i] <= z?"), must take 𝛀(log(n)) steps.
+
+- So for this decision tree, each node will make a comparison A[i] <= z
+
+- This comparison dictates what the next decision will be for the next search part.
+
+- For this tree, the leaves represent the possible outputs of the algorithm.
+
+- Here, they are the n indices of the elements plus a potential extra element z that doesn't exist to satisfy the comparison.
+
+- This means the decision tree must have at least n + 1 leaves (+1 for the possibly nonexistent element). 
+
+- Representing the worst case scenario for this algorithm requires us to follow the path from root to a leaf.
+
+- Since the tree has at least (n + 1) leaves, the decision tree must have depth at least log(n + 1), meaning it MUST take 𝛀(log(n + 1)) steps.
+
+This has taken me 4 hours so far and wowowowowow I do NOT want to write the upcoming 2 programs at 2:30AM.
+

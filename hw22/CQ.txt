@@ -1,0 +1,40 @@
+Exercise 1: Write out the table of sub-problems shown in Figure 6.4, but make it for the words  **anagram** and **agnar** instead of **exponential** and **polynomial**.
+
+Do you get an edit distance of 5?
+
+- NO! We should get an edit distance of 4.
+
+- Attached photo from my pixel phone should be included in the repo.
+
+Exercise 2 (6.3): Yuckdonald's is considering opening a series of restaurants along Quaint Valley Highway (QVH)
+
+The n possible locations are along a straight line, and the distances of these locations from the start of QVH are,
+
+in miles and in increasing order, m_1, m_2, ..., m_n. The constraints are as follows:
+
+1) At each location, Yuckdonald's may open at most one restaurant. The expected profit from opening a restaurant at a location i is p_i, where p_i > 0 and i = 1, 2, ..., NO
+
+2) Any two restaurants should be at least k miles apart, where k is a positive integer
+
+Give an efficienct algorithm to compute the maximum expected total profit subject to the given constraints
+
+- Note: To me, having n possible locations along a straight line means a linearized graph.
+
+- Note: It also seems like we're running Dijkstra's, given we're keeping track of node-to-node distance AND node-from-start distance.
+
+- An initializer function iterates through all locations along the QVH. If a location is at least k miles apart from another, give an edge weight between the two corresponding to the destination node's expected profit
+
+- After marking each location with an expected profit, run Dijkstra's algorithm, traversing through the highest cost edge lengths, to find the maximum profit from the start of the highway.
+
+Exercise 3 (6.8): Given two strings x = x_1,x_2,...,x_n and y = y_1, y_2, ..., y_m, we with to find the length of their longest common substring.
+
+(That is, the largest k for which there are indices i and j with x_i, x_(i+1), ..., x_(i+k-1) = y_j, y_(j+1), y_(j+k-1)
+
+Show how to do this in time O(mn)
+
+- Given we know the algorithm on pg. 163 runs in O(nm), I am thinking we can change it so that:
+
+- Instead of looking for edit cost of delete, insert, swap, we instead ONLY look for delete (set the cost of insert and swap to be infinity)
+
+- Running the same algorithm on pg. 163 with these new cost definitions should reveal the largest common substring, in that we find the minium edit distance to correspond with the minimum amount of characters deleted.
+

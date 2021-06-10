@@ -1,0 +1,65 @@
+(CQ1) Explain your reasoning, for how you built the flame graph for any value of n.
+
+- The first loop requires 3 steps for setup + n updates of the variable i, giving n+3
+
+- The second loop also requires 3 steps for setup n times (3*n), and 2*n steps for each loop (n loops), giving 2*n^2
+
+- Combine these two sections for 2n^2 + 3n 
+
+(CQ2) Briefly describe the set of all formulae that are considered correct, when the exact amount is 2*n+7.  (Don't spend too much time on this one... write down what it looks like to you, without getting too bogged down in details.)
+
+- I'd say the range of "(1000 * 2n) + constant" to "(2n / 1000) + constant" would be considered correct
+
+-- This is just due to the factor of 1000 meaning a number 1000 times greater or smaller than the exact answer (1000*x or x/1000).
+
+(CQ3) When we use n as the estimate, briefly argue why this estimate will always be within a factor of 1000 of the exact value (2*n+7).
+
+- Using n as the estimate will always give you a number roughly half of what the exact value will be. This will always be within a factor of 1000, as this (halve the exact value - 7 = n) pattern will continue to to n=infinity, .
+
+-- A different view would be that the ratio starts at .498 with n=1000, and slowly approaches 0.5. It will never reach 0.5, as n will always be less than half of 2n + 7, and having the ratio increase instead of decrease mean this ratio can never reach 1/1000 beyond n=1000. 
+
+(CQ4) Explain your reasoning for the double_loop exercise above, specifically why your concise cost formula is within a factor of 1000 of the exact value for all n >= 1000.
+
+- Here, I can disregard counting the exact steps for setting up main, giving only 1 steps
+
+- The outer for loop really only needs the n loops to be counted to be precise, not the +3 for setup
+
+- Also, the n^2 is the most important part of the inner loop. Multiplying it by 2 or adding 3*n doesn't really make a difference once we get to n=1000 (where n^2 = 1,000,000, and 2,300,000 exact steps is within a factor of 3)
+
+(CQ5) Briefly explain your reasoning for selection sort.
+
+- n nodes to loop through (for n), call find_smallest n times w/ just one inside instruction (find_smallest*n n), call the for loop within find_smallest n times, looping through n nodes (for*n n^2).
+
+(CQ6) Briefly explain the panC1 costs.
+
+- delete_min having v^2 steps from being called v times and running through the array each time it's called + shift through the entire array
+
+- nearby called v times with 1 step each
+
+- for called v times with neighbor steps
+
+- decrease_key being called each time a neighbor is checked out, giving *e with 1 step each  (*e e)
+
+(CQ7) Briefly explain the panC2 costs.
+
+- Most of the values are copied from panC1. 
+
+- nearby's for loop will have e steps to check for every neighbor (reduced from 2*e in an exact calculation) 
+
+- decrease_key will be called e times, and in the worst case will need to swap v times each call (v*e)
+
+(CQ8) Briefly explain the dijkstra costs.
+
+- The values mostly follow the number of calls to a single-step function and number of vertices/edges to loop through 
+
+- sift_down's while loop will have to make h swaps v times (h*v)
+
+-- bubble_up, at the worst case, will be called e times, requiring h swaps each time (h*e)
+
+(CQ9) Does this strategy, of always choosing the lightest edge that will extend a connected set, make sense to you?
+
+Why do you think it should (or should not) find the overall minimum spanning tree?
+
+- Intuitively, always picking the next shortest path seems to be a decent idea for finding the minimum spanning tree.
+
+- I think it should work for finding the overall minimum spanning tree, only based on intuition. I'd like to do some testing before making a final opinion on the matter.

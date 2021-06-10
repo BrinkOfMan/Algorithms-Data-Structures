@@ -1,0 +1,243 @@
+(CQ1) Prove that 500n + 500 is 𝚶(n). That is, provide a specific value for the constant c and then show that, with this value for c, the relevant inequality is true.
+
+- Set c = 1000
+
+- If 500n + 500 is 𝚶(n), then for all values n>=1, 500n+500 <= c*n
+
+- For n=1: 500*1 + 500 <= 1000*1
+
+- For n=2: 500*2 + 500 <= 1000*2
+
+- This pattern will continue for all n > 1
+
+- Therefore, 500n + 500 is 𝚶(n)
+
+(CQ2) Prove that 2n^2 + 1000 is not 𝚶(n) .  That is, show that, no matter what specific value for c is tried, the precise inequality will not be true.
+
+- For any value c > 0, the exponential growth of 2n^2 will eventually grow larger than c*n for some n >= 1.
+
+- Because of this, 2n^2 + 1000 can never be <= c*n for all n >= 1
+
+- Therefore, 2n^2 + 1000 is not 𝚶(n)
+
+(CQ3) Prove that 500n + 500 is 𝛀(n+1).  That is, provide a specific value for the constant c and then show that, with this value for c, the relevant inequality is true.
+
+- Set c = 1
+
+- For all n >= 1, 500c + 500 will always be at least 500 times greater than 1(n+1) 
+
+(CQ4) Prove that  500n + 500 is not 𝛀(n^2).  That is, show that, no matter what specific value for c is tried, the relevant inequality will not be true.
+
+- For any value c > 0, the exponential growth of n^2 will eventually grow larger than 500n + 500 for some n >= 1.
+
+- Because of this, 500n + 500 can never be >= c*(n^2) for all n >= 1
+
+(CQ5) Prove that 500n + 500 is 𝚹(n). (This should be easy, you have already done the work!)
+
+- Set c = 1000
+
+- We have previously shown that this will provide a case where 500n + 500 will always be <= 1000*n for all n >= 1
+
+-- So, 500n + 500 is 𝚶(n)
+
+- set c = 1
+
+- For all n >= 1, 500n + 500 will always be at least 500 times greater than 1(n*1).
+
+-- So, 500n + 500 is 𝛀(n)
+
+--- Therefore, 500n + 500 is 𝚹(n)
+
+(CQ6) Prove that 2n^2 + 1000 is not 𝚹(n).
+
+- For any value c, the exponential growth of 2n^2 will eventually grow larger than c*n for some n >= 1.
+
+- Because of this, 2n^2 + 1000 can never be <= c*n for all n >= 1
+
+-- So, 2n^2 + 1000 is not 𝚶(n)
+
+-- Since  2n^2 + 1000 can't be 𝚶(n), 2n^2 + 1000 cannot be 𝚹(n)
+
+--- Therefore, 2n^2 + 1000 is not 𝚹(n)
+
+(CQ7) Suppose f(n) = 2n^2 + 1000.
+Define a function g1 such that g1 is 𝚶(f), but not 𝛀(f).
+Define a function g2 such that g2 is 𝛀(f), but not 𝚶(f). 
+Define a function g3 that is 𝚹(f) in simplest terms. (For example, if f had been 20n + 7, then g3 would be n)
+For each function, please briefly explain your reasoning.
+
+- g1(n) = 100n^3 + 10. This being a power ABOVE f(n) means it will eventually outgrow f(n) after some value n >= 1 for any c > 0 (it is 𝚶(f)). This ALSO means it can't always be <= f(n) for all n >= 1 and any c > 0 (it is not 𝛀(f)).
+
+- g2(n) = 100n + 12345. This being a power BELOW f(n) means it will eventually get ougrown by f(n) after some value n >= 1 for any c > 0 (it is 𝛀(f)). This ALSO means it can't always be >= f(n) for all n >= 1 and any c > 0 (it is not 𝚶(f)).
+
+- g3(n) = n^2.
+
+-- For g3(n) = 𝚶(f):
+
+--- set c = 2000
+
+--- For n = 1: (c*g3(n) = 2000 * 1^2 = 2000) >= (1002 = 2 * 1^2 + 1000 = f(n))
+
+--- As these are the same power, both will grow at a precisely similar exponential rate, and the pattern of c*g3(n) >= f(n) will last for all n >= 1 where c = 2000.
+
+--- Therefore, g3(n) is 𝚶(f).
+
+-- For g3(n) = 𝛀(f):
+
+--- set c = 1
+
+--- For n = 1: (c*g3(n) = 1 * 1^2 = 1) <= (1002 = 2 * 1^2 + 1000 = f(n))
+
+--- As these are the same power, both will grow at a precisely similar exponential rate, and the pattern of c*g3(n) <= f(n) will last for all n >= 1 where c = 1.
+
+--- Therefore, g3(n) is 𝛀(f).
+
+- Since g3(n) = 𝛀(f) and g3(n) is 𝛀(f), g3(n) = 𝚹(f).
+
+(CQ8) Prove or disprove:  18 n^3 = 𝛀(500 n^2)
+
+- Disproving this one
+
+- Since 18 * n^3 is a power larger than 500 * n^2, it will eventually grow larger than c * (500 * n^2) for some n >= 1 at any c > 0.
+
+- Since it can't always be <= c * (500 * n^2) for all n >= 1 for any c > 0, 18 * n^3 cannot be = 𝛀(500 n^2)
+
+(CQ9) Prove or disprove:  2n * log(n) = 𝚶(n)
+
+- Proving this one
+
+- Set c = 1.
+
+- For n = 1: 2n * log(n) > 1 * n
+
+- This will hold for all n >= 1.
+
+- Therefore, 2n * log(n) = 𝚶(n)
+
+(CQ10) Prove or disprove:  if f(n) = 𝚶(g(n)), then 2*f(n) = 𝚶(g(n))
+
+- Proving this one
+
+- We already know that f(n) = 𝚶(g(n)) for some c > 1.
+
+- Because of this, doubling the value of f(n) will still mean it is >= g(n) for all n >= 1 and the same value c > 1.
+
+- Therefore, 2*f(n) = 𝚶(g(n))
+
+(CQ11) Prove or disprove:  if f(n) = 𝚶(g(n)), then g(n) = 𝚶(f(n))
+
+- Disproving this one.
+
+- Say that f(n) = 2^n and g(n) = n.
+
+- Set c = 1. 2^n >= 1 * n for all n >= 1.
+
+- For g(n) = 𝚶(f(n)), set c = 1.
+
+- Here, n is NOT >= 2^n for any n >= 1 with c = 1.
+
+- So, g(n) != 𝚶(f(n)), and the statement of "if f(n) = 𝚶(g(n)), then g(n) = 𝚶(f(n))" is false
+
+(CQ12) How many dots are printed for n = 12?  Explain your answer.
+
+- 7. 1 initial call, 2 calls * 3 recursive loops where n=12, n=2, n=0
+
+(CQ13) What formula describes the (approximate) number of dots for any n?  If possible, write your formula as n to some power.
+
+- n^(log_b(a)), the LEAF emphasis one.
+
+(CQ14) Use the Master Theorem to solve the following recurrence:  T(n) = 5*T(n/7) + n^3.  (Hint:  start by writing down the values for a, b, and d.  Then estimate logb(a), and compare with d.  Choose the appropriate emphasis in the theorem, and write down the appropriate solution.)
+
+- a = 5, b = 7, d = 3. log_7(5) = 0.8, 3 > log_7(5), ROOT emphasis. T(n) = 𝚶(n^3)
+
+(CQ15) Use the Master Theorem to solve the following recurrence:  T(n) = 5*T(n/7) + 1.  Write down a, b, d, and an approximate value for logb(a) explicitly, as well as the asymptotic solution.
+
+- a = 5, b = 7, d = 0. 0 < log_7(5). LEAF emphasis.  T(n) = 𝚶(n^0 * log(n))
+
+(CQ16) Use the Master Theorem to solve the following recurrence:  T(n) = 4*T(n/4) + n.  Write down a, b, d, and logb(a) explicitly, as well as the asymptotic solution.
+
+- a = 4, b = 4, c = 1. log_4(4) = 1. 1 = log_4(4). EQUAL emphasis. T(n) = 𝚶(n^log_b(a))
+
+(CQ17) Please type in the Master Theorem as part of the homework (no copy paste) to help remember it.
+
+- I've written it in my notebook. Please take my word for it, as I don't want to re-attempt the formatting in a .txt file
+
+(CQ18) In a sentence or two, please comment on the three examples shown under the theorem (in the Generic Form section of the wikipedia article).
+
+- Aside from critical exponents, these examples seem to represent the 3 cases covered in the google doc.
+
+- The first being about a LEAF emphasis, 2nd being EQUAL, and 3rd being ROOT emphasis. 
+
+- Not really sure how the critical exponent applies here, hope discuss this in class today.
+
+(CQ19) Use this same two step process to analyze the running time of the following C++ function:
+
+void recursion2(int n)
+{
+  for (int i=0; i < n; i++) {
+    int x = sin(0.8*i+0.234);
+  }
+
+  if (n > 0) {
+    recursion2(n/2);
+    recursion2(n/2);
+  }
+}
+
+Note that the loop has been changed just slightly from the previous example.
+
+- T(n) = 1*T(n/2) + 1*T(n/2) + n
+
+- T(n) = 2*T(n/2) + n
+
+- a = 2, b = 2, d = 1. log_b(a) = 1. 1 = 1. EQUAL emphasis. T(n) = 𝚶(n^1 * log(n))
+
+(CQ20) Use this same two step process to analyze the running time of the following C++ function:
+
+void recursion3(int n)
+{
+  for (int i = 0; i < sqrt(n); i++) {
+    for (int j = 0; j < sqrt(n)/2; ++j) {
+      int x = sin(0.8*i+0.234);
+    }
+  }
+
+  if (n > 0) {
+    recursion3(n/3);
+    recursion3(n/3);
+    recursion3(n/3);
+    recursion3(n/3);
+  }
+}
+
+
+- T(n) = 4*T(n/3) + (n/2). a = 4, b = 3, d = 0.5. log_b(a) = 1.2, 0.5 < 1.2. LEAF emphasis. T(n) = 𝚶(n^log_3(4))
+
+(CQ21) The following quotation is attributed to Prof. Charles Leiserson at MIT:
+
+"If you want to be a good programmer you just program every day for two years. If you want to be a world class programmer you can program every day for ten years, or you could program every day for two years and take an algorithms class."
+
+What do you think?  Does the study of algorithms seem like it could be a compressed version of learning from doing a lot of coding, without actually writing code?  (We will be writing more code in the second part of the semester, but it is also possible to study Algorithms with no programming component at all.)
+
+- At first I didn't like my education at St. Olaf because I didn't think I was getting enough experience to be good at programming post-graduation.
+
+- Thinking about this course + past courses I've had, I completely agree with Prof. Charles Leiserson. There's only so much you can learn with just practice alone.
+
+- Learning the theory behind all the complexities that exist in computer science can make a programmer so much better than just having the coding experience alone.
+
+Exercise: (CQ22) In your own words, with your own example, explain this property of logarithms.
+
+- We're working with base powers. log(a^b) = log("a * a" b times). Reducing this via the log base exponent, we can pull that b out and multiply it by what would just be log(a), as log(a^b) would give us the base exponent required to get log("a * a" b times).
+
+- log_4(2^4) = log_4(2 * 2 * 2 * 2) = log_4(16) = 2 = 4 * 0.5 = 4 * log_4(2)
+
+(CQ23) In your own words, with your own example, describe this property of logarithms.  Why is it called the change of base formula?
+
+- This one I don't understand immediately, but I've used it many times in programs when I don't have access to a custom logarithmic base function. I just kind of accept it as changing logarithmic base gospel.
+
+- log_2(16) = log_4(16) / log_4(2) = 2/0.5 = 4.
+
+(CQ24) When describing the running time of an algorithm that involves a logarithm using asymptotic notation, we will usually write log(n) rather than log2(n) or log10(n).  Why?  (Hint:  log2(10) is also a fixed constant.)
+
+- Common base values, or its been inferred. Those are the only reasons I skip out on including the base.
+

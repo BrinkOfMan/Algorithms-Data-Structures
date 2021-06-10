@@ -1,0 +1,43 @@
+(CQ1) In the panA algorithm, which function will cost more: update_all() or find_min()?  Why?  If we analyze just the function that costs more, can we be assured of getting an estimate for the overall cost that is within a factor of two?  Why or why not?
+
+- update_all() is more costly, requiring a nested loop to check for all neighbors of u. find_min() only goes through nodes once.
+
+-- From this, I believe just estimating the update_all() function should give us a reasonable estimate within a factor of 2, as find_min() would add however many average steps * the number of nodes in the graph.
+
+(CQ2) In the panB algorithm, which function will cost more in total: nearby() or find_min()?  Why?
+
+- nearby(). There will be more checking of neighbors for all nodes in nearby() than sorting through all nodes once to find the minimum value in find_min().
+
+(CQ3)  Instead of a plot, please explain (in about three or four sentences) how you would analyse the cost of the panB algorithm.
+
+-  The pattern I see is that the nearby()'s cost consists of:
+
+- nearby*x x*2
+
+- In the for loop, on average, corners have a cost of 4, the perimeter nodes have a cost of 5, and surrounded nodes have a cost of 6
+
+- Add all those values up to get a decent estimate of nearby()'s cost.
+
+- find_min()'s cost should always be the number of nodes * 2 
+
+- Add both these values up for an even better estimate of the cost of panB
+
+(CQ4) Would your analysis change if you were considering "wheel" graphs, rather than "square grid" graphs?  Why or why not?
+
+- Yes. Since all nodes are connected to the center and 2 edge neighbors, the cost of nearby()'s for loop would usually be between X*4 and X*5, as there would always be 3 neighbors to check and potentially 1 warning.
+
+(CQ5) Do you expect that counting the steps for scopes and v and w will yield a number approximately proportional to the number of clock cycles needed to run DFS?  Why or why not?
+
+- Somewhat. I think there's a similar amount of steps per explore based on the shape of the graph. each scope of v and w are similar when they have a similar neighbor count.
+
+(CQ6) In the above example, how many times do we call the explore function (total)?  How many vertices are there?  Are these two numbers related, and if so, why are they related?
+
+- We call the explore function 9 times, uncoincidentally the number of vertices present on the graph.
+
+-- Being that explore is only called when a vertex hasn't been visited, it makes sense that it should be called (# of vertices) times.
+
+(CQ7)  In the above example, how many times do we pick a neighbor w (total)?  How many edges are there?  Are these two numbers related, and if so, how and why are they related?
+
+- We pick neighbors 16 times, or 2 * the number of edges (in this case, 8).
+
+-- They are absolutely relatied, as a vertex will pick its neighbor at the time of exploration, and its neighbor will pick it back during the neighbor's time of exploration.

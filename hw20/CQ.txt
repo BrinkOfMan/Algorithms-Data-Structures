@@ -1,0 +1,42 @@
+Exercise 3: (CQ) Explain, in your own words, why the running times for these two strategies are so different.
+
+- Reference: Here's the running times on my windows machine:
+
+PS C:\Users\ethan\brinkm1\ADS\hw20> Measure-Command {start-process ./hw20-longest-slow.exe -Wait}
+
+
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 1
+Ticks             : 10432386
+TotalDays         : 1.20745208333333E-05
+TotalHours        : 0.0002897885
+TotalMinutes      : 0.01738731
+TotalSeconds      : 1.0432386
+TotalMilliseconds : 1043.2386 
+
+
+
+PS C:\Users\ethan\brinkm1\ADS\hw20> Measure-Command {start-process ./hw20-longest-sub.exe -Wait} 
+
+
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 1
+Milliseconds      : 17
+Ticks             : 10175463
+TotalDays         : 1.177715625E-05
+TotalHours        : 0.00028265175
+TotalMinutes      : 0.016959105
+TotalSeconds      : 1.0175463
+TotalMilliseconds : 1017.5463             <--------- Only a few ms quicker!
+
+- These don't appear to be too dissimilar
+
+- However, the reason described in the book follows what these tests show (slow is slower than sub)
+
+- In the slow version, we change the subproblem to be consistent of 1 extra node for each iteration
+
+-- This creates a whole bunch of similar subproblems that end up using time to get solved over and over again, and therefore make the running time slower

@@ -1,0 +1,61 @@
+Exercise 5.1  (for part c, to describe a cut, give two sets of vertices that are complements of each other.): Consider the following graph.
+
+(a) What is the cost of its minimum spanning tree?
+
+- Working from node A and adding the next lowest edge to an unexplored edge:
+
+- 1(A,E) + 1(E,F) + 2(E,B) + 3(F,G) + 3(G,H) + 4(G,C) + 5(G,D) = 20
+
+(b) How many minimum spanning trees does it have?
+
+- I see a possible different node connections, being: (E,B) -> (F,B)
+
+- So, I believe there are 2 minimum spanning trees.
+
+(c) Suppose Kruskal's algorithm is run on this graph. In what order are the edges added to the MST? For each edge in this sequence, give a cut that justifies its addition.
+
+- (A-E,E-F,F-B) CUT(F-G) (G-H,G-C,G-D)
+
+Exercise 5.2a: Run prim's algorithm on this graph; whenever there is a choice of nodes, always use alphabetic ordering. Draw a table showing the intermediate values of the cost array.
+
+- Prim's choice of nodes: (A,B) (B,C) (C,G) (G,D) (G,F) (G,H) (A,E)
+
+- Not sure what the intermediate values of the cost array is supposed to represent: but cost of edge choices: (1, 2, 2, 1, 1, 1, 4)
+
+Exercise 5.3: Design a linear-time algorithm for the following task.
+
+Input: A connected, undirected graph G.
+
+Question: Is there an edge you can remove from G while still leaving G connected? 
+
+Can you reduce the running time of your algorithm to O(|V|)?
+
+- Using reverse greedy (looking for largest length): for each node, while there is more than 1 edge to an is_connected(neighbor) node, remove the largest length edge as a connection.
+
+- I believe this should be semi-linear, as it will only loop through the entire graph once.
+
+- However, the "while there is still an edge to an is_connected(neighbor) node" makes it run in O(|V|+2*|E|) time, and I'm not sure how to reduce the running time to just O(|V|)
+
+Exercise 5.5: Consider an undirected graph G(V, E) with nonnegative edge weights w_e >= 0.
+
+Suppose that you have computed an MST of G, and that you have also computed shortest paths to all nodes from a particular node s \in V.
+
+Now suppose each edge weight is increased by 1: the new weights are w'_e = w_e + 1.
+
+(a) Does the MST change? Give an example where it changes or prove it cannot change.
+
+- No. Considering that w'_e consists of ALL edge weights from w_e (just increased by 1), the MST (which contains the minimum weight edges that connect all nodes) should remain unchanged.
+
+(b) Do the shortest paths change? Giev an example where they change or prove they cannot change.
+
+- I hope I'm not misunderstanding the situation here. Still no, as all edge weights increasing by 1 means the minimum weighted edges will still be minimum weighted edges after every edge length is increased by 1.
+
+- So, the shortest paths will remain the same, as all minimum weighted edges remain unchanged.
+
+- If we're talking about cost, then absolutely, as the new shortest paths will just be increased by \count(E \in shortest_path)
+
+Exercise 5.7: Show how to find the maximum spanning tree of a graph, that is, the spanning tree of largest total weight.
+
+- Hey, I've already kind of answered this in my response to 5.3!
+
+- Use prim's algorithm, but with maximum edge weights being used to form connections instead of minimum edge weights.

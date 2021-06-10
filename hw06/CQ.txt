@@ -1,0 +1,29 @@
+(CQ1) In two or three sentences, explain the strategy that you used for solving the previous puzzle.
+
+- First, I'd look at the frontier nodes, and check the values of when the towns connecting to them were put into lockdown and the amount of days it would take to spread.
+
+- Second, Alphabetically write when a day's lockdowns would occur.
+
+CQ2) If you had a much larger puzzle (with, say, 1000 towns), and there was a big reward for solving it correctly by hand, how would you approach it?
+
+- Same deal. Look at frontier nodes, calculate what day they will get put in lockdown, then sort alphabetically if multiple occur on a single day.
+
+(CQ3) In a sentence or two, when do you think an adjacency list may be more helpful than an adjacency matrix, and vice versa?
+
+- I believe adjacency list would benefit me more in looking where a vertex's connections go to.
+
+- For the adjacency matrix, I think it would benefit me more in looking for where connections to a vertex come from.
+
+(CQ4) If two vertices are connected in a graph, is there any relationship between their pre and post numbers?  If so, what is that relationship, and if not, describe an example where they have essentially nothing in common.
+
+- I think that two connected nodes' pre and post numbers have a somewhat marginal relationship with how far away from the "end" of a depth-first path the vertices are.
+
+- For instance, nodes C and D in dfs4 are connected and far away from the end of their DFS path. Both their pre numbers are small, and post numbers much larger
+
+- The same can be seen for nodes P and Q, who share similar numbers due to how close to the end of their path they are.
+
+- However, nodes like C and G don't share much in common, despite being connected.
+
+- As G is a single step away from its respective DFS path, but G's path concluding does not lead to C's conclusion, as there are still 4 more paths to exhaust before returning.
+
+- In short, there is a stronger relationship between connected nodes within the same path, and the opposite for connected nodes on separate or branched DFS paths.

@@ -1,0 +1,86 @@
+Exercise 7.1: Consider the following linear program.
+
+    Maximize 5x + 3y
+    5x - 2y \Geq 0
+    x + y \Leq 7
+    x \Leq 5
+    x, y \Geq 0
+
+Plot the feasible region and identify the optimal solution (in a file lp1.jpg)
+
+- My immediate reaction is to set x = 5 (largest possible value to start). I can only set y to a max of 2 then, as x + y \Leq 7
+
+-- So, x = 5, y = 2, 5(5) + 3(2) = 31
+
+- See lp1.jpg for answer plot
+
+Exercise 7.3: A cargo plane can carry a maximum weight of 100 tons and a maximum volume of 60 cubic meters.
+
+There are three materials to be transported, and the cargo company may choose to carry any amount of each, up to the maximum available limits given below.
+
+    Material 1 has density 2 tons/cubic meter, maximum available amount 40 m^3, and revenue $1k / m^3
+
+    Material 2 has density 1 ton/m^3, maximum available amount 30 m^3, and revenue $1.2k/m^3
+
+    Material 3 has density 3 tons/m^3, maximum available amount 20 m^3, and revenue $12k/m^3
+
+Write a linear program that optimizes revenue with the constraints
+
+- You got it, boss.
+
+- Let's create some variables v1 v2 v3 that represent the volume of each material
+
+- Using these very vivacious volume values, we venture to vilify the volume while validifying voluptuous revenues via the vivid linear program visible below
+
+-  Formula to maximize: 
+
+-- $1,000*v1 + $1,200*v2 + $12,000*v3
+
+- Constraints:
+
+-- 2*v1 + v2 + 3*v3 \Leq 100
+
+-- v1 + v2 + v3 \Leq 60
+
+-- v1 \Leq 40
+
+-- v2 \Leq 30
+
+-- v3 \Leq 20
+
+-- v1, v2, v3 \Leq 0
+
+Exercise 6.4: You are given a string of n characters s[1 ... n], which you believe to be a corrupted text document in which all punctuation has vanished
+
+    (it looks something like "itwasthebestoftimes" instead of "it was the best of times")
+
+You wish to reconstruct the document using a dictionary, which is available in the form of a Boolean function dict(.): for any string w,
+
+    dict(w) = (true if w is a valid word) (false otherwise)
+
+(a) Give a dynamic programming algorithm that determines whether the string s[.] can be reconstituted as a sequence of valid words.
+
+The running time should be at most O(n^2), assuming calls to dict() take unit time
+
+- Subproblem: A current character in a substring of the corrupted string is valid IF the previous sequence was valid and this current character is also valid
+
+- Note: Let M[i] = 1 if the substring s[1]s[2]...s[i] matches the sequence of a valid word.
+
+-- We compute the values in order from 1 to n as follows.
+
+void reconstruction
+    M[0] = 1
+    for i = 1; i < n; i++: // Loop through all characters
+        M[i] = 0 // Init that char to have a FALSE matching sequence
+        for j = i; j >= 1; j-- // Go from left <- right through current substring
+            if dict(s[j], s[j + 1], . . . , s[i]) && M[j − 1] = 1 // If the sequence matches AND the last character had a matching sequence
+                M[i] = 1 // This character leads to a matching sequence
+
+(b) In the event that the string is valid, make your algorithm output the corresponding sequence of words.
+
+- Ok
+
+- If dict(.) == 1, uhhhhh
+-- uhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+-- Can we modify the dict function? I'd have it return a string* and concatenate it + a space to a local string containg all matching words.
+-- Otherwise I don't think I know how to. It's also nearly 3 AM and our quiz is today xd

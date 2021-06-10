@@ -1,0 +1,7 @@
+[I decided to stop running tests on both my desktop and the link machines]
+
+[It will just be desktop from now on]
+
+300 iterations from my Windows desktop computer: 37817300000, 37421800000, 38146100000
+
+(Average 37,795,066,667)

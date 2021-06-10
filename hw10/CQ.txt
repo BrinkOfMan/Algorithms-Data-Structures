@@ -1,0 +1,89 @@
+(CQ1) In a complete binary tree with height 4, how many vertices are there?  How about height 8?
+
+- We're adding up powers of 2 with this style of tree. This will give us 2^(n+1) - 1
+
+-- 4: 2^0 + 2^1 + 2^2 + 2^3 = 1 + 2 + 4 + 8 = 15
+
+-- 8: 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 = 255
+
+(CQ2) In a complete ternary tree with height 4, how many vertices are there?  How about height 8?
+
+- Same deal. Adding up powers of 3. This pattern is cool, where 3^(n+1) is equal to (the sum of all powers of 3) * 2 + 1
+
+-- 4: 3^0 + 3^1 + 3^2 + 3^3 = 1 + 3 + 9 + 27 = 40
+
+--- 8: 1 + 3 + 9 + 27 + 81 + 243 + 729 + 2187 = 3280
+
+(CQ3) If a complete binary tree has 7 vertices, what is its height?  If a complete binary tree has 1023 vertices, what is its height?
+
+- 2, 9. This can be found by taking log_2(n+1) - 1
+
+(CQ4) In two sentences, why do you think that this cost (of calling both delete_min() and decrease_key() in a heap) is so much less than the cost for a priority queue based on either the unsorted or sorted array?
+
+- Here, the number of swaps is related to the depth of the heap, being a logarithmic function of base 2 (corresponding to the binary tree depth)
+
+-- This means the number of swaps will be drastically lower for binary trees compared to priority queses, and subsequently have much lower step counts.
+
+(CQ5) If we start with an empty heap, and insert the numbers 3, 2, and 1, in that order, how many steps do we need?  Please explain your reasoning.
+
+- 3: 3 steps (instert, add_end, bubble_up) 
+
+- 2: 5 steps (insert, add_end, bubble_up, swap, bubble_up)
+
+- 1: 5 steps (insert, add_end, bubble_up, swap, bubble_up)
+
+-- This will make the tree have a root of 1, followed by 2 and 3; 13 steps are needed.
+
+(CQ6) If we start with a heap that contains the numbers from 1 to 10 in order from the top, and we delete_min() three times (so that the output is 1, 2, 3), how many steps do we need?  Please explain your reasoning.
+
+- 10 nodes means a height of 3. 
+
+-- first delete_min() will require at most 9 steps (delete_min, to_top, sift_down, swap, sift_down, swap, sift_down, swap, sift_down to final row)
+
+-- second delete_min() will also require at most 9 steps (delete_min, top_top, sift_down*3 7)
+
+-- tird delete_min() will remove the last node in the 3rd row, still being at most 9 steps.
+
+--- This gives us a total of 18 steps. 
+
+(CQ7) If we have an array of 100 elements, approximately how many steps would be needed to sort using heapsort?  In addition to a number, please explain your reasoning in two or three sentences.
+
+- Probably a bad way of estimating. 100 elements = a depth of 6. We're almost halfway through row 6 to fulfill 127 nodes.
+
+-- (2 steps per swap * 6 depth) * (100 / 2 numbers that need to be swapped) = 600 steps.
+
+--- This doesn't feel right, but I'm not sure how else to approach this.
+
+(CQ8) For this specific graph, how many times will we call the delete_min() function?  In addition to a number, please explain your answer in one sentence.
+
+- 100 times. This is due to there being 100 vertices which will be removed from the heap.
+
+(CQ9) Approximately how many steps do we need to count for each call to delete_min()?  Why?
+
+- I believe: 2 scope & to_top + ((2 * height of tree) / 2 to average the height) scope sift_down & swap
+
+(CQ10) How many times will we call the nearby() function?
+
+- We should also be calling nearby 100 times for the same reason.
+
+(CQ11) How many steps do we need to count for each call to nearby()?  What is the fixed part, and what is the varying part?  Explain your answer in one or two sentences.
+
+- 2 scope & v + 2 * average edges + 1??? warning (ideally)
+
+-- Fixed is the 2 for scope & v as well as 2*avg. edges for w. Uncertain how many warnings will be issued.
+
+(CQ12) Approximately how many times will we call the decrease_key() function?  Why is it hard to give a precise answer for the number of calls to decrease_key()?
+
+- At minimum, 99. Again, not sure how many times warnings will be issued.
+
+(CQ13) Approximately how many steps should we count for each call to decrease_key(), assuming that the element we are changing is somewhere near the middle of the array?
+
+- (2 scope & swap) * 1/2 height of heap. 
+
+(CQ14) In two or three sentences, explain your approach to estimating the number of steps for the points in the plot.
+
+- until(v + 1) + delete_min(2*v) + sift_down(v*height swaps) + nearby(2*v) + nearby_for(2*e + v-1 warnings) + decrease_key(2*v) + bubble_up(v*height swaps)
+
+-- Hopefully this formula provides enough insight to understand. v = vertices, e = edges, height = heap height.
+
+--- sift_down and bubble_up predictions were based on the assumption all warnings needed to be somewhere in the center of the heap, providing ((2 scope & swap) * 1/2 height of heap) steps per call.

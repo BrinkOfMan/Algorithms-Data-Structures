@@ -1,0 +1,97 @@
+
+Exercise 1: Create an example of the Satisfiability problem that has four variables and five clauses, and solve it.
+
+Explain how many solutions exist for your particular example.
+
+- (!x U y U !z)(x U !y U z) (w U x U y U z)(!x U !y)
+
+-- answers (that I can think of): (w OR !w), !x, y, z; (w/!w), !x, !y, z; (w/!w), x, !y, !z.
+
+-- There may be more that I'm not aware of. I think no others will work.
+
+- This would give us 6 answers
+
+Exercise 2: Create an example of the Travelling Salesperson problem with 5 nodes and 8 weighted edges (with an appropriate budget), and solve it.
+
+- Graph G = |V| = a, b, c, d, e; |E| = {a, b, 2}, {b, e, 3}, {a, d, 2}, {c, d, 2}, {c, e, 2}, {b, d, 2}, {a, c, 2}, {c, b, 3}
+
+- (This graph will also appear as graph.jpg in the repository)
+
+-- Optimal path (cost of 11): {a, d, 2}, {c, d, 2}, {c, e, 2}, {b, e, 3}, {a, b, 2}
+
+Exercise 3: Create an example of the Hamiltonian cycle problem (also called Rudrata cycle in this book) in a graph that has 5 nodes nad 8 edges, and solve it.
+
+- Same graph as before!
+
+-- We could just take the same path, but I'll look for another.
+
+-- Seems like we can take the following path: {a -> c, 2}, {c -> d, 2}, {d -> b, 2}, {b -> e, 3}
+
+Exercise 4: Create an example of Integer Linear Program with 3 variables and 6 constraints, and solve it.
+
+- I uhhh, don't have a clear understanding of this one tbh. Going to skip and pray it doesn't come up on the final.
+
+Exercise 5: Create an example of the Vertex Cover problem with 5 nodes and 8 edges (with an appropriate budget), and solve it.
+
+- I guess I'll use the same graph as before. Going to attempt to find the fewest possible vertices.
+
+-- I believe {c, b, (a OR d)} covers all edges 
+
+Exercise 6: Create an example of the Independent Set problem with 5 nodes and 8 edges (with an appropriate budget), and solve it.
+
+- Same graph xd. Realize I haven't been adding a budget but I don't really know what that would entail.
+
+-- Anyways, we're looking for the opposite of the vertex cover. So, either (a, e) or (d, e) is the largest IS
+
+Exercise 7: Create an example of the Clique problem with 5 nodes and 8 edges (with an appropriate budget), and solve it.
+
+- Oh man, using the grpah.jpg kinda stinky, as we'd require ALL nodes. (The inclusion of one node in this graph necessitates a new connection to another node).
+
+-- If we had a goal of like, 4 vertices, this would not have a solution.
+
+Exercise 8: Create an example of the longest path problem with 5 nodes and 8 weighted edges (with an appropriate budget), and solve it.
+
+- s = a, t = e, g >= 10.
+
+-- I believe the longest path is as follows: (a -> d, 1), (d -> c, 2), (c -> b, 3), (b - > e, 3). Total path length of 12
+
+Exercise 9: Create an example of Subset Sum with a sequence of 8 values and a goal g, and solve it.
+
+- A
+
+Exercise 10: What is the definition of a 'Search Problem' that underlies all these examples? 
+
+- We are "searching" for the correct answer in the most efficient method possible.
+
+-- Given a set of variables and an exponential amount of possible methods to solve some question, we always try to find the most efficient path to a solution.
+
+What does the book mean by an 'instance'? 
+
+- A collection of data specifying a specific problem to solve
+
+What does the book mean by a 'solution'?
+
+- An object, path, subset, etc. that meets a particular specification / satisfies requirements
+
+What is the program C?
+
+- The program C is an algorithm that will take the instance and proposed solution and checks if the solution is ture (in polynomial time)
+
+Give a specific example of each of these three elements of the definition in case of Vertex Cover.
+
+- I = graph.jpg (|V| and |E|), S = (c, b, a), C(I, S) = true (because all edges are covered by the vertices)
+
+Exercise 11: Is a dynamic programming problem necessarily a search problem? 
+
+If yes, why yes, if no, why no, and if sometimes, what are the conditions?
+
+- I'd argue sometimes. Sometimes, you need to find a solution in the quickest way possible, via an efficient search path.
+
+-- Other times, you just need to find a solution via the divide-and-conquer method.
+
+-- Honestly, not going to change my answer from when I first guessed what I was supposed to answer. I think it still holds up.
+
+Exercise 12: Is it possible to express Hamiltonian Cycle as a Satisfiability problem?  Why or why not?
+
+- Yes! I believe the Rudrata/Hamiltonian cycle is an NP-complete problem, as well as the Satisfiability problem. Therefore, the two would reduce into each other, being the same kind of problem (but with different language).
+

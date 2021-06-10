@@ -1,0 +1,41 @@
+(CQ1) In a couple sentences, explain your reasoning about the total cost of pushing N items onto this kind of stack.
+
+- I believe this is once again the sum of all numbers 1 through N, being N*(N+1) / 2 + 1
+
+- The +1 at the end represents setting up the for loop. 
+
+- I know Olaf emphasized the unnecessary nature of including the 1 extra step, but I like to.
+
+(CQ2) In a couple sentences, explain your reasoning about the total cost for various values of N.
+
+- For each doubling of N, add (N+2) + 2N steps to the previous value to achieve the amount of steps needed for double 2N
+
+- (N+2) represents the cost of copying (setting up the array and for loop), and 2N represents the cost of pushing the extra N numbers.
+
+- Smaller formula: (Steps up to N) + 3N + 2 = (Steps for 2N)
+
+- Pretty good chance that this is comepletely incorrect.
+
+- Actually, looking at the pattern formed by 2 through 64, I think finding out the number of steps without using previous values is: 3N + 2(log(base 2)(n) - 1) - 1
+
+- I spent 30 minutes on this for no reason other than I wanted to find a pattern.
+
+-- For the average number of pushes, I'm just guessing the average number of steps will peak at the first or second double, then decrease towards 3 again, as the need to double the array becomes less frequent.
+
+-- (every doubling adds 1 step per push on average, as the last push will require adding all values of the previous array to the new).
+
+(CQ3)  Briefly explain what the total and average plots would look like, if we did large numbers of inject and eject operations (balanced so that the queue never got full?)
+
+- I believe the steps graph would be linear, with an average step count being 3 for each number injected (assuming we count each additional 2 steps to eject per 2nd number injected)
+
+(CQ4) Approximately how large an array can be sorted in one second (total time), using "no loop" sort?
+
+- I was getting around 180 or so items
+
+(CQ5) Approximately how large an array can be sorted in one second, using selection sort?
+
+- I was getting around 20,000 items
+
+(CQ6) Approximately how large an array can be sorted in one second, using merge sort?
+
+- Somehow I was able to reach 350,000 items in just a second

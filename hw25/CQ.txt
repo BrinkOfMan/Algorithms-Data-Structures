@@ -1,0 +1,102 @@
+Exercie 6.21: A vertex cover of a graph G = (V, E) is a subset of vertices S ⊆ V that includes at least one endpoint of every edge in E.
+
+Give a linear-time algorithm for the following task.
+
+Input: An undirected tree T = (V, E).
+
+Output: The size of the smallest vertex cover of T.
+
+For instance, in the following tree, possible vertex covers include {A, B, C, D, E, F, G} and {A, C, D, F} but not {C, E, F}.
+
+The smallest vertex cover has size 3: {B, E, G}.
+
+- I think we can solve this in a *similar* manner to solving the largest independent sets of a rooted tree.
+
+- For each node u in a rooted tree, we define a subproblem V(u) as finding the minimum vertex cover for the subtree rooted at undirected
+
+-- (If u is a leaf node, V(u) = 0, because a subtree of a leaf node has no edges!)
+
+- If a vertex cover does not use a node, it hase to use all its neighboring nodes.
+
+-- So instead of using the book's internal node computation with a max, we should use a min and a slightly different sum function for i,j,k.
+
+-- V(i) = min(sum_j_children_of_i(1 + sum_k_children_of_j(V(k))), 1 + sum_j_children_of_i(V(j)))
+
+- To find the actual cover, for each node u, we maintain a variable M(u) that records whether the first term or the second in the right hand side of Equation 1 led to the minimum
+
+-- the vertex cover can be reconstructed by following these pointers top-down from the root
+
+- The first solutions start with leaf nodes, and slowly progress upwards (lower depth) through the graph
+
+- The final solution (AKA V(r)) will be the size of the minimum vertex cover for the root of the tree!
+
+- Since this will require calculating V(i) and M(i) for each internal node, and the worst case means we'll look at each edge twice (2 * |E|), this should be a liear running time of O(2*|E|)
+
+Exercise 6.5: Pebbling a checkerboard. We are given a checkerboard which has 4 rows and n columns, and has an integer written in each square. 
+
+We are also given a set of 2n pebbles, and we want to place some or all of these on the checkerboard (each pebble can be placed on exactly one square) so as to maximize the sum of the integers in the squares that are covered by pebbles.
+
+There is one constraint: for a placement of pebbles to be legal, no two of them can be on horizontally or
+vertically adjacent squares (diagonal adjacency is fine).
+
+(a) Determine the number of legal patterns that can occur in any column (in isolation, ignoring the pebbles in adjacent columns) and describe these patterns.
+
+- As a sidenote: This would make an amazing game of Blokus
+-- https://www.boardgamegeek.com/boardgame/2453/blokus
+
+- I drew this one out on paper. I believe there's only 8 compatible layouts.
+
+-- See the PIXL_numbers.jpg file for reference
+
+- There can only be a MAX of 2 pebbles per column, as no adjacent touching is allowed. (All the numbers are supposed to represent columns, even though they're written out in rows)
+
+-- So, we know that for every "1" there MUST be a 0 on either side of it.
+
+Call two patterns compatible if they can be placed on adjacent columns to form a legal placement.
+
+Let us consider subproblems consisting of the first k columns 1 ≤ k ≤ n. Each subproblem can be assigned a type, which is the pattern occurring in the last column.
+
+(b) Using the notions of compatibility and type, give an O(n)-time dynamic programming algorithm for computing an optimal placement.
+
+- Have an array dp[n][5][5].
+
+- Let dp[i][j][k] store the maximum sum that can be achieved starting from column 'i' to column 'n-1'
+
+-- (columns are numbered 0 - (n-1)), where row 'j' and row 'k' of column 'i-1' are chosen. If j=0 or k=0 (then no cell is chosen). (Rows are numbered 1 - 4).
+
+- At each column, we find the max(single columns' max given all 8 patterns, all compatible patterns of subsequent columns)
+
+- This *should* be O(n columns), as we only need to go through n columns in semi-linear time to compute the max sum that can be achieved for columns up to itself, and comparing the values of each compatible column.
+
+-- Maybe O(n^2?)
+
+Exercise 6.16: The garage sale problem (courtesy of Professor Lofti Zadeh).
+
+On a given Sunday morning, there are n garage sales going on, g1, g2, . . . , gn. For each garage sale gj, you have an estimate of its value to you, vj.
+
+For any two garage sales you have an estimate of the transportation cost dij of getting from gi to gj. You are also given the costs d0j and dj0 of going between your home and each garage sale.
+
+You want to find a tour of a subset of the given garage sales, starting and ending at home, that maximizes your total benefit minus your total transportation costs.
+
+Give an algorithm that solves this problem in time O(n^2 * 2^n). (Hint: This is closely related to the traveling salesman problem.)
+
+- This sounds almost exactly like the TSP, so I'll use the same algorithm to solve it.
+
+- For a subset of garage sales S \subseteq {1, 2, ..., n} that includes 1, and j \in S, let C(S, j) be the length f the hosrtest path visiting each node S exactly once, starting at 1 and ending at j
+
+-- |S| > 1, define C(S,1) = \inf as there's no path from start to start
+
+- To express C(S,j) in terms of smaller subproblems, we can pick the second-to-last city as an inner node i \in S so the overall path length is C(S - {j}, i) + len(last_edge)
+
+-- Elaborated algorithm with i: C(S,j) = min_over_all_i_\neq_j_\in_S(C(S - {j},i) + len(last_edge))
+
+- Subsequent pseudocode:
+
+C({1}, 1) = 0
+    for s = 2 to n:
+        for all subsets S \subseteq {1, 2, . . . , n} of size s and containing 1:
+            C(S, 1) = \inf
+            for all j \in S, j != 1:
+                C(S, j) = min{C(S − {j},i) + len(last_edge) : i \in S,i != j}
+return min_j C({1, . . . , n}, j) + len(edges_to_j)
+

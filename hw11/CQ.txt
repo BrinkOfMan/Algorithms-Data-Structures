@@ -1,0 +1,64 @@
+(CQ1) Is this the shortest path from G to Z in this graph?  If yes, how do you know, and if no, what is a shorter path?
+
+- Yes. No other paths grom G to Z have a lower cost.
+
+(CQ2) In the situation above, will generating a large number of random four edge paths from G eventually generate the shortest path to Z?  Why or why not?
+
+- No. If I'm understanding the question correctly, limiting the creation of edges to 4 excludes the current shortest path (5 edges) mentioned in CQ1
+
+-- HOWEVER, if this question asks if this algorithm will generate the shortest *four edge path* after some time, yes. It might take a long time, but eventually it will be found. 
+
+(CQ3) If we are trying to find a shortest path that has 5 edges, what is the probability of finding it randomly (as a decimal)?  How about 10 edges?
+
+- p(5 edges) = 1/6 * 1/6 * 1/6 * 1/6 * 1/6 = 0.000128600823, AKA (1/6)^5
+
+-- p(10 edges) = (1/6)^10 = 1.65381717 x 10^-8
+
+(CQ4) Is the figure above correct?  That is, if you pick any vertex other than G, is at least one shortest path from G to that vertex shown in light green?  (There may be ties, but is there at least one shortest path shown?)
+
+- Took awhile to double-check every vertex, but I believe this figure is correct
+
+(CQ5) Is it always possible to show a complete set of shortest paths to the vertices from some starting vertex in the form of a tree?  Why or why not?
+
+- I believe so. The tree would likely have multiple nodes with varying children nodes attatched (no a perfect binary tree).
+
+-- With this, you could search for the vertex you want to know the shorted path for, and trace the tree upward.
+
+(CQ6) Please check the distances for nodes H, N, and P.  Do they appear to be correct?  What is your strategy for checking if they are correct?
+
+- Yes. Like mentioned previously, start at the end node and trace the shortest path back. N could either connect to G through H or M and still have a distance of 5.
+
+(CQ7) For the graph in the anansi exercises (the ones above where we start with vertex D), if we have already created the prev information for each vertex, how do we find the shortest path from D to C? 
+
+Please explain this latter calculation in detail, including the specific names of appropriate vertices between D and C.
+
+Don't explain what was done to create the prev values, explain just what needs to be done after the prev values are known, so as to trace out a specific shortest path.
+
+- After all of the prev's have been assigned, start at node C.
+
+-- Enter a loop wherein you check the prev value for each vertex, then travel to that node.
+
+--- Repeat until you reach node D.
+
+--- This loop will give the output (if we were printing where we've travelled): C, B, E, D
+
+---- Read this sequence in reverse to get the shortest path! (D, E, B, C)
+
+(CQ8) How can we estimate the cost of the procedure described in CQ7?  How does this latter cost compare to the cost of computing the prev values?
+
+- Since we need to access the node's previous value for each trace call, at least 2 steps per node are required
+
+-- Ex: Scope trace(u) -> print u.prev -> scope trace(u.prev) -> print u.prev ... etc.
+
+-- This should give us the value of 2*distance (however you calculate that)
+
+-- If we're only counting the nearby's for loop in calculating prev values, it should compare to the cost of computing the prev values at about a 1 : 4 ratio
+
+(CQ9) In two or three sentences, what are some of the patterns you have noticed in working out the costs of these variations on Dijkstra?
+
+- There seems to be pretty consistent values for every type of action outside of the varying array/queue/heap storage.
+
+-- queue and sorted array seem to grow exponentionally, while heap grows at a logarithmic (base 2) rate
+
+-- This could make for a great quiz topic :)
+

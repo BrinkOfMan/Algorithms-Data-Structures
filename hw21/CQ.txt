@@ -1,0 +1,48 @@
+(CQ) If we have two strings with three characters each, how many possible alignments would there be?
+
+- 01 (3 columns) + 12 (4 columns) + 21 (5 columns) + 10 (6 columns) = 01 + 12 + 21 + 10 = a palindrome = 44 
+
+ABC
+XYZ
+
+-ABC -ABC -ABC 
+XYZ- XY-Z X-YZ
+
+A-BC A-BC A-BC
+XYZ- XY-Z -XYZ
+
+AB-C AB-C AB-C
+XYZ- X-YZ -XYZ
+
+ABC- ABC- ABC-
+XY-Z X-YZ -XYZ
+
+--ABC --ABC --ABC  
+XYZ-- XY-Z- XY--Z
+
+-A-BC -A-BC -A-BC 
+XYZ-- X-YZ- X-Y-Z
+
+-AB-C -AB-C -AB-C 
+XY-Z- X-YZ- X--YZ
+
+-ABC- -ABC- -ABC- 
+XY--Z X-Y-Z X--YZ
+
+A-BC- A-BC- A-BC- 
+XY--Z -XY-Z -X-YZ
+
+AB-C- AB-C- AB-C- 
+X-Y-Z -XY-Z --XYZ
+
+ABC-- ABC-- ABC--
+X--YZ -X-YZ --XYZ
+
+---ABC --A-BC --AB-C --ABC- -A-BC- -AB-C- -ABC-- A-BC-- AB-C-- ABC---
+XYZ--- XY-Z-- XY--Z- XY---Z X-Y--Z X--Y-Z X---YZ -X--YZ --X-YZ ---XYZ
+
+(CQ)  Please answer this question after you have filled in the table.  When you fill in the very last entry of the table (in the lower right), which other entries are most helpful in figuring out the optimal alignment?  Why?
+
+- I'd say the entries in the middle-end, as they highlight the subgroups that align with each other.
+
+-- This is just a personal perspective, as I was finding difficulties defining subgroups when looking just at the full letter sequences.

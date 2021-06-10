@@ -1,0 +1,9 @@
+300 iterations from my Windows desktop computer: 296362, 316464, 318250
+
+(Average 310,358)
+
+300 iterations from ssh link machine: 556254, 555741, 542931
+
+(Average 551,642)
+
+- A lot less than insertion, but still much higherfor whatever reason.
